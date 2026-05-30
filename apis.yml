@@ -1,32 +1,291 @@
 aid: mockaroo
 name: Mockaroo
-description: "Generate fake data to JSON, CSV, TXT, SQL and XML"
+description: >-
+  Mockaroo is a realistic mock data generator and API mocking service used by
+  developers and QA teams to produce JSON, CSV, TXT, custom-delimited, SQL,
+  and XML test data. The platform combines a schema designer, 150+ built-in
+  field types (Name, Internet, Address, Business, Date, Currency, Geographic,
+  Phone, Health, Technology, and more), named datasets used as lookup sources,
+  hosted mock APIs, formulas, projects, AI-assisted field generation,
+  de-identification, and a REST API for programmatic generation. Mockaroo
+  ships in four tiers (Free, Silver, Gold, Enterprise), with the Enterprise
+  tier available as a Docker image for self-hosted, unlimited generation.
 url: https://www.mockaroo.com/docs
+humanURL: https://www.mockaroo.com
+baseURL: https://api.mockaroo.com
+image: https://www.mockaroo.com/assets/logo.svg
 specificationVersion: '0.20'
+type: Index
+access: 3rd-Party
 created: '2026-05-28'
-modified: '2026-05-28'
+modified: '2026-05-30'
+x-type: company
 x-source: public-apis/public-apis
-x-category: "Test Data"
+x-category: Test Data
 x-tier: 3
 x-tier-reason: bulk-registered-from-public-apis
 tags:
   - Test Data
+  - Mock Data
+  - API Mocking
+  - Data Generation
+  - Developer Tools
+  - QA Testing
+  - Realistic Data
+  - Schemas
+  - Datasets
   - Public APIs
+
 apis:
-  - name: Mockaroo
-    description: "Generate fake data to JSON, CSV, TXT, SQL and XML"
+  - aid: mockaroo:mockaroo
+    name: Mockaroo API
+    description: >-
+      REST API for generating realistic mock data records in JSON, CSV, TXT,
+      custom-delimited, SQL, and XML formats. Supports saved schemas, inline
+      field specifications, 150+ built-in field types, named datasets as
+      lookup sources, and asynchronous background generation jobs for large
+      requests.
     humanURL: https://www.mockaroo.com/docs
-    baseURL: https://www.mockaroo.com/docs
+    baseURL: https://api.mockaroo.com
     tags:
       - Test Data
+      - Mock Data
+      - Data Generation
+      - REST API
     properties:
       - type: Documentation
         url: https://www.mockaroo.com/docs
+      - type: APIReference
+        url: https://www.mockaroo.com/docs
+      - type: OpenAPI
+        url: openapi/mockaroo-openapi.yml
+      - type: Authentication
+        url: https://www.mockaroo.com/docs
+      - type: RateLimits
+        url: rate-limits/mockaroo-rate-limits.yml
+      - type: NaftikoCapability
+        url: capabilities/mockaroo-generate.yaml
+      - type: NaftikoCapability
+        url: capabilities/mockaroo-types.yaml
+      - type: NaftikoCapability
+        url: capabilities/mockaroo-datasets.yaml
+      - type: NaftikoCapability
+        url: capabilities/mockaroo-downloads.yaml
+      - type: JSONSchema
+        url: json-schema/mockaroo-field-spec-schema.json
+      - type: JSONSchema
+        url: json-schema/mockaroo-field-type-schema.json
+      - type: JSONSchema
+        url: json-schema/mockaroo-download-schema.json
+      - type: JSONSchema
+        url: json-schema/mockaroo-dataset-schema.json
+      - type: JSONStructure
+        url: json-structure/mockaroo-field-spec-structure.json
+      - type: JSONStructure
+        url: json-structure/mockaroo-field-type-structure.json
+      - type: JSONStructure
+        url: json-structure/mockaroo-download-structure.json
+      - type: JSONStructure
+        url: json-structure/mockaroo-dataset-structure.json
+      - type: Example
+        url: examples/mockaroo-list-types-example.json
+      - type: Example
+        url: examples/mockaroo-generate-json-example.json
+      - type: Example
+        url: examples/mockaroo-generate-csv-example.json
+      - type: Example
+        url: examples/mockaroo-generate-txt-example.json
+      - type: Example
+        url: examples/mockaroo-generate-custom-example.json
+      - type: Example
+        url: examples/mockaroo-generate-sql-example.json
+      - type: Example
+        url: examples/mockaroo-generate-xml-example.json
+      - type: Example
+        url: examples/mockaroo-upload-dataset-example.json
+      - type: Example
+        url: examples/mockaroo-delete-dataset-example.json
+      - type: Example
+        url: examples/mockaroo-get-download-example.json
+      - type: Example
+        url: examples/mockaroo-cancel-download-example.json
+      - type: Example
+        url: examples/mockaroo-field-spec-example.json
+      - type: Example
+        url: examples/mockaroo-field-type-example.json
+      - type: Example
+        url: examples/mockaroo-download-example.json
+      - type: Example
+        url: examples/mockaroo-dataset-example.json
+
 common:
   - type: Website
+    url: https://www.mockaroo.com
+  - type: Documentation
     url: https://www.mockaroo.com/docs
-  - type: PublicAPIsListing
-    url: https://github.com/public-apis/public-apis
+  - type: SignUp
+    url: https://www.mockaroo.com/users/sign_up
+  - type: Login
+    url: https://www.mockaroo.com/users/sign_in
+  - type: Pricing
+    url: https://www.mockaroo.com/pricing
+  - type: Plans
+    url: plans/mockaroo-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/mockaroo-rate-limits.yml
+  - type: TermsOfService
+    url: https://www.mockaroo.com/terms
+  - type: PrivacyPolicy
+    url: https://www.mockaroo.com/privacy
+  - type: Support
+    url: https://www.mockaroo.com/support
+  - type: GitHubOrganization
+    url: https://github.com/mockaroo
+  - type: GitHubRepository
+    name: mockaroo-node
+    url: https://github.com/mockaroo/mockaroo-node
+  - type: GitHubRepository
+    name: mockaroo-enterprise
+    url: https://github.com/mockaroo/mockaroo-enterprise
+  - type: SDK
+    name: mockaroo-node (Official Node.js client)
+    url: https://github.com/mockaroo/mockaroo-node
+  - type: SDK
+    name: NMockaroo (C#)
+    url: https://github.com/amogram/NMockaroo
+  - type: SDK
+    name: Mockaroo.NET (C#)
+    url: https://github.com/Ackara/Mockaroo.NET
+  - type: SDK
+    name: mockaroo-python (Python)
+    url: https://github.com/Scarvy/mockaroo-python
+  - type: SDK
+    name: mockaRoo (R)
+    url: https://github.com/lockedata/mockaRoo
+  - type: SDK
+    name: mockaroo.api (Java)
+    url: https://github.com/djhvscf/mockaroo.api
+  - type: SDK
+    name: mockaroo-connector (MuleSoft)
+    url: https://github.com/djuang1/mockaroo-connector
+  - type: SpectralRules
+    url: rules/mockaroo-rules.yml
+  - type: Vocabulary
+    url: vocabulary/mockaroo-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/mockaroo-context.jsonld
+  - type: NaftikoCapability
+    url: capabilities/mockaroo-generate.yaml
+  - type: Features
+    data:
+      - name: Realistic Mock Data Generation
+        description: >-
+          Generate realistic test records using more than 150 built-in field
+          types spanning names, addresses, business, internet, dates,
+          currency, geography, phone, health, and technology categories.
+      - name: Multiple Output Formats
+        description: >-
+          Export generated data as JSON, CSV, tab-separated TXT, custom
+          delimiter, SQL INSERT statements, or XML.
+      - name: Schema Designer
+        description: >-
+          Design, save, and reuse schemas in the web UI, then call them by
+          name from the REST API.
+      - name: Datasets As Lookup Sources
+        description: >-
+          Upload CSV or plain-text datasets and use them as lookup sources in
+          schemas via the Dataset Column field type.
+      - name: Mock APIs
+        description: >-
+          Host mock REST endpoints that return generated records on demand,
+          including configurable error conditions.
+      - name: Background Generation
+        description: >-
+          Submit large generation requests asynchronously and poll
+          /api/downloads/{id} for status, progress, and the final download
+          URL.
+      - name: Formulas And Custom Functions
+        description: >-
+          Transform generated values with reusable Mockaroo formula
+          expressions and custom functions.
+      - name: AI Field Generation
+        description: >-
+          Generate field definitions and custom types using AI assistance in
+          the schema editor.
+      - name: De-identification
+        description: >-
+          Anonymize sensitive datasets via Mockaroo's de-identification
+          tooling.
+      - name: Enterprise Docker Deployment
+        description: >-
+          Run Mockaroo as a self-hosted Docker container inside a private
+          cloud or datacenter for unlimited, organization-wide generation.
+  - type: UseCases
+    data:
+      - name: UI Prototyping
+        description: >-
+          Power UI prototypes with realistic request/response data so design
+          reviews surface real edge cases (long names, Unicode, blanks).
+      - name: Load And Performance Testing
+        description: >-
+          Generate millions of realistic records to populate staging
+          databases for load and performance testing.
+      - name: QA Test Data
+        description: >-
+          Produce repeatable, schema-driven test data for automated test
+          suites and continuous integration pipelines.
+      - name: Demo And Sales Environments
+        description: >-
+          Stand up demo environments with believable customer data without
+          touching production.
+      - name: Data Anonymization
+        description: >-
+          Replace sensitive production data with statistically similar but
+          synthetic records for safe sharing.
+      - name: API Mocking
+        description: >-
+          Front-end and integration teams hit Mockaroo-hosted mock APIs while
+          back-end services are still under construction.
+  - type: Integrations
+    data:
+      - name: Node.js
+        description: Official mockaroo-node Promise-based client for the Generate API.
+      - name: .NET / C#
+        description: Community NMockaroo and Mockaroo.NET libraries.
+      - name: Python
+        description: Community mockaroo-python wrapper.
+      - name: R
+        description: Community mockaRoo package for the Generate API.
+      - name: Java
+        description: Community mockaroo.api Java client.
+      - name: MuleSoft
+        description: Community MuleSoft connector for invoking Mockaroo schemas.
+      - name: Salesforce CLI
+        description: testdata sfdx plugin generates Salesforce test data via Mockaroo schemas.
+      - name: Kafka
+        description: mockaroo2kafka scripts feed generated records into Kafka topics for streaming tests.
+      - name: MCP
+        description: >-
+          Community mockaroo-mcp MCP server exposes Mockaroo's generate
+          surface to LLM agents.
+      - name: Docker
+        description: >-
+          Mockaroo Enterprise is distributed as a Docker image for
+          self-hosted deployment.
+  - type: Solutions
+    data:
+      - name: Free
+        description: 1,000 records per file, 200 API requests per day.
+      - name: Silver
+        description: $60/year. 100,000 records per file, 1,000,000 records per day.
+      - name: Gold
+        description: $500/year. 10,000,000 records per file, 10,000,000 records per day.
+      - name: Enterprise
+        description: $7,500/year. Self-hosted Docker, unlimited generation, organization-wide access.
+
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+  - name: Mockaroo, LLC
+    url: https://www.mockaroo.com
+    email: support@mockaroo.com

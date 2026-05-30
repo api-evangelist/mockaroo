@@ -1,0 +1,118 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Mockaroo
+providerId: mockaroo
+created: '2026-05-30'
+modified: '2026-05-30'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Test Data
+  - Mock Data
+description: >-
+  Mockaroo enforces per-API-key daily quotas tied to the account's subscription
+  plan. The Free plan permits 200 API requests per day; Silver allows
+  1,000,000 records per day; Gold allows 10,000,000 records per day;
+  Enterprise is unlimited. Per-request record caps also vary by plan (1,000 on
+  Free, 100,000 on Silver, 10,000,000 on Gold, unlimited on Enterprise).
+  Synchronous generation is capped at 5,000 records per download on Free
+  accounts when background=false; larger jobs must use the background=true
+  flag and poll /api/downloads/{id} for status. There is no documented
+  per-second rate limit; quotas are enforced over the rolling daily window.
+sources:
+  - https://www.mockaroo.com/docs
+  - https://www.mockaroo.com/pricing
+
+responseCodes:
+  quotaExceeded: 429
+  throttled: 429
+
+limits:
+  - name: Free plan API requests per day
+    scope: key
+    metric: requests_per_day
+    limit: 200
+    timeFrame: day
+    notes: Free accounts are limited to 200 API requests per day.
+
+  - name: Free plan records per file
+    scope: key
+    metric: records_per_request
+    limit: 1000
+    timeFrame: usage
+    notes: Free accounts can generate at most 1,000 records per file.
+
+  - name: Free plan synchronous download cap
+    scope: key
+    metric: records_per_request
+    limit: 5000
+    timeFrame: usage
+    notes: >-
+      Free accounts are capped at 5,000 records per synchronous download when
+      background=false. Larger jobs require background=true (paid plans only).
+
+  - name: Silver plan records per day
+    scope: key
+    metric: records_per_day
+    limit: 1000000
+    timeFrame: day
+    notes: Silver accounts can generate up to 1,000,000 records per day.
+
+  - name: Silver plan records per file
+    scope: key
+    metric: records_per_request
+    limit: 100000
+    timeFrame: usage
+    notes: Silver accounts can generate up to 100,000 records per file.
+
+  - name: Gold plan records per day
+    scope: key
+    metric: records_per_day
+    limit: 10000000
+    timeFrame: day
+    notes: Gold accounts can generate up to 10,000,000 records per day.
+
+  - name: Gold plan records per file
+    scope: key
+    metric: records_per_request
+    limit: 10000000
+    timeFrame: usage
+    notes: Gold accounts can generate up to 10,000,000 records per file.
+
+  - name: Enterprise plan records per day
+    scope: account
+    metric: records_per_day
+    limit: -1
+    timeFrame: day
+    notes: Enterprise (self-hosted Docker) accounts have no generation quota.
+
+  - name: Background job concurrency
+    scope: key
+    metric: concurrent_requests
+    limit: 'see vendor docs'
+    notes: >-
+      Long-running generations should be issued with background=true; status
+      is polled via GET /api/downloads/{id}.
+
+policies:
+  - name: API key scoping
+    description: >-
+      All limits are scoped to the API key associated with the account. Each
+      account has a single API key shown in the My Account page; quotas reset
+      daily.
+  - name: Quota exhaustion
+    description: >-
+      Once the daily quota is exhausted the API returns HTTP 429 until the
+      quota window resets. The mockaroo-node SDK surfaces this as a
+      UsageLimitExceededError.
+  - name: Background generation
+    description: >-
+      Jobs exceeding the synchronous record cap must set background=true.
+      Mockaroo returns a download id which can be polled via
+      /api/downloads/{id} for status, percent complete, and the final URL.
+  - name: Upgrade to raise limits
+    description: >-
+      Higher per-day and per-request limits are obtained by upgrading the
+      account plan (Free → Silver → Gold) or by deploying Enterprise via
+      Docker for unlimited self-hosted generation.

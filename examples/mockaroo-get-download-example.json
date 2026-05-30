@@ -1,0 +1,15 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.mockaroo.com/api/downloads/abc123?key=YOUR_API_KEY"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "abc123",
+      "status": "in_progress",
+      "percentComplete": 47.3,
+      "recordsGenerated": 473000
+    }
+  }
+}

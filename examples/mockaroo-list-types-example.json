@@ -1,0 +1,35 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.mockaroo.com/api/types?key=YOUR_API_KEY"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "name": "First Name",
+        "category": "Name",
+        "description": "A randomly chosen first name.",
+        "parameters": []
+      },
+      {
+        "name": "Email Address",
+        "category": "Internet",
+        "description": "A randomly generated email address.",
+        "parameters": []
+      },
+      {
+        "name": "IP Address v4",
+        "category": "Internet",
+        "description": "A randomly generated IPv4 address.",
+        "parameters": []
+      },
+      {
+        "name": "Currency",
+        "category": "Money",
+        "description": "An ISO 4217 currency code.",
+        "parameters": []
+      }
+    ]
+  }
+}

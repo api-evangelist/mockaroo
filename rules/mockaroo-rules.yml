@@ -1,0 +1,103 @@
+extends:
+  - spectral:oas
+documentationUrl: https://www.mockaroo.com/docs
+description: >-
+  Spectral ruleset capturing Mockaroo API conventions: api-key authentication,
+  /api/* path prefix, format-encoded generate endpoints, and Title Case operation
+  summaries.
+rules:
+  mockaroo-info-contact:
+    description: Mockaroo specs must declare a contact block pointing at support.
+    severity: error
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  mockaroo-info-license:
+    description: Mockaroo specs must declare a license / terms entry.
+    severity: warn
+    given: $.info
+    then:
+      field: license
+      function: truthy
+
+  mockaroo-server-host:
+    description: Mockaroo's production host must be api.mockaroo.com.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: ^https://api\.mockaroo\.com/?$
+
+  mockaroo-api-prefix:
+    description: All Mockaroo paths must live under the /api/ prefix.
+    severity: error
+    given: $.paths
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^/api/.+
+
+  mockaroo-operation-id:
+    description: Every operation requires an operationId in lowerCamelCase.
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      - field: operationId
+        function: truthy
+      - field: operationId
+        function: pattern
+        functionOptions:
+          match: ^[a-z][a-zA-Z0-9]+$
+
+  mockaroo-summary-title-case:
+    description: Operation summaries must use Title Case (each significant word capitalized).
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: ^([A-Z][a-zA-Z0-9]*)(\s+(?:[A-Z][a-zA-Z0-9]*|a|an|and|as|at|but|by|for|in|of|on|or|the|to|with))+$
+
+  mockaroo-tag-required:
+    description: Operations must declare at least one tag.
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: tags
+      function: length
+      functionOptions:
+        min: 1
+
+  mockaroo-api-key-security:
+    description: The root security must include the api-key scheme (query or header).
+    severity: error
+    given: $.components.securitySchemes
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required: [apiKeyQuery]
+            - required: [apiKeyHeader]
+
+  mockaroo-generate-format-suffix:
+    description: Generate endpoints must encode the output format as a path suffix (.json, .csv, .txt, .custom, .sql, .xml).
+    severity: error
+    given: $.paths[?(@property.match(/^\/api\/generate/))]~
+    then:
+      function: pattern
+      functionOptions:
+        match: ^/api/generate\.(json|csv|txt|custom|sql|xml)$
+
+  mockaroo-rate-limit-response:
+    description: Every operation must declare a 429 response since Mockaroo enforces daily quotas.
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch].responses
+    then:
+      field: '429'
+      function: truthy

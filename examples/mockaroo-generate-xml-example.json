@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.mockaroo.com/api/generate.xml?count=2&schema=Users&key=YOUR_API_KEY"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/xml"
+    },
+    "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<dataset>\n  <record><id>1</id><first_name>Lara</first_name><last_name>Hopfer</last_name></record>\n  <record><id>2</id><first_name>Devon</first_name><last_name>Quincey</last_name></record>\n</dataset>\n"
+  }
+}

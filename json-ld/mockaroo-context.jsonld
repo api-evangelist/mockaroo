@@ -1,0 +1,52 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "mockaroo": "https://www.mockaroo.com/vocab#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "FieldSpec": "mockaroo:FieldSpec",
+    "FieldType": "mockaroo:FieldType",
+    "Dataset": "mockaroo:Dataset",
+    "Download": "mockaroo:Download",
+    "Schema": "mockaroo:Schema",
+    "Project": "mockaroo:Project",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "category": "schema:category",
+    "type": "mockaroo:fieldType",
+    "percentBlank": {
+      "@id": "mockaroo:percentBlank",
+      "@type": "xsd:integer"
+    },
+    "formula": "mockaroo:formula",
+    "parameters": {
+      "@id": "mockaroo:parameters",
+      "@container": "@list"
+    },
+
+    "id": "@id",
+    "status": "mockaroo:status",
+    "percentComplete": {
+      "@id": "mockaroo:percentComplete",
+      "@type": "xsd:double"
+    },
+    "recordsGenerated": {
+      "@id": "mockaroo:recordsGenerated",
+      "@type": "xsd:integer"
+    },
+    "error": "mockaroo:error",
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+
+    "filename": "mockaroo:filename",
+    "project": "mockaroo:project",
+    "rows": {
+      "@id": "mockaroo:rows",
+      "@type": "xsd:integer"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.mockaroo.com/api/generate.sql?count=2&schema=Users&table=users&key=YOUR_API_KEY"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/sql"
+    },
+    "body": "INSERT INTO users (id, first_name, last_name, email) VALUES (1, 'Lara', 'Hopfer', 'lhopfer0@nih.gov');\nINSERT INTO users (id, first_name, last_name, email) VALUES (2, 'Devon', 'Quincey', 'dquincey1@imdb.com');\n"
+  }
+}

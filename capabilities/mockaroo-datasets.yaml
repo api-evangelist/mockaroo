@@ -1,0 +1,146 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "Mockaroo API — Datasets"
+  description: >-
+    Datasets — manage named CSV or plain-text datasets that schemas can use as
+    lookup sources during generation. 2 operations. Lead operation: Upload Or
+    Replace A Dataset. Self-contained Naftiko capability covering one Mockaroo
+    business surface.
+  tags:
+    - Mockaroo
+    - Test Data
+    - Datasets
+  created: "2026-05-30"
+  modified: "2026-05-30"
+
+binds:
+  - namespace: env
+    keys:
+      MOCKAROO_API_KEY: MOCKAROO_API_KEY
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "mockaroo-datasets"
+      baseUri: "https://api.mockaroo.com"
+      description: "Mockaroo Datasets management. Self-contained, no shared references."
+      authentication:
+        type: apikey
+        key: X-API-Key
+        value: "{{env.MOCKAROO_API_KEY}}"
+        placement: header
+      resources:
+        - name: "datasets"
+          path: "/api/datasets/{name}"
+          operations:
+            - name: "uploadDataset"
+              method: POST
+              description: "Upload or replace a named dataset."
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "Name of the dataset."
+                - name: filename
+                  in: query
+                  type: string
+                  required: false
+                  description: "Original filename for the uploaded dataset."
+                - name: project
+                  in: query
+                  type: string
+                  required: false
+                  description: "Project in which to store the dataset."
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: "Raw CSV or plain-text content of the dataset."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: "deleteDataset"
+              method: DELETE
+              description: "Delete a named dataset."
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "Name of the dataset."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "mockaroo-datasets-rest"
+      port: 8080
+      description: "REST adapter for Mockaroo Datasets. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/datasets/{name}"
+          name: "datasets"
+          description: "REST surface for dataset management."
+          operations:
+            - method: POST
+              name: "uploadDataset"
+              description: "Upload or replace a named dataset."
+              call: "mockaroo-datasets.uploadDataset"
+              with:
+                name: "rest.name"
+                filename: "rest.filename"
+                project: "rest.project"
+                body: "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: "deleteDataset"
+              description: "Delete a named dataset."
+              call: "mockaroo-datasets.deleteDataset"
+              with:
+                name: "rest.name"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "mockaroo-datasets-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for Mockaroo Datasets. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "upload-dataset"
+          description: "Upload or replace a named dataset."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "mockaroo-datasets.uploadDataset"
+          with:
+            name: "tools.name"
+            filename: "tools.filename"
+            project: "tools.project"
+            body: "tools.body"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: "delete-dataset"
+          description: "Delete a named dataset."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "mockaroo-datasets.deleteDataset"
+          with:
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."

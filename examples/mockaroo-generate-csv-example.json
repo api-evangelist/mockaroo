@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.mockaroo.com/api/generate.csv?count=2&schema=Users&key=YOUR_API_KEY"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "text/csv"
+    },
+    "body": "id,first_name,last_name,email\n1,Lara,Hopfer,lhopfer0@nih.gov\n2,Devon,Quincey,dquincey1@imdb.com\n"
+  }
+}

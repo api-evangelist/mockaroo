@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.mockaroo.com/schemas/mockaroo-download.json",
+  "title": "Mockaroo Background Download",
+  "description": "Status of an asynchronous, background-generated download job.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identifier of the background download job."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["queued", "in_progress", "success", "failed"],
+      "description": "Current state of the job."
+    },
+    "percentComplete": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Percent of records generated so far."
+    },
+    "recordsGenerated": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of records generated so far."
+    },
+    "error": {
+      "type": "string",
+      "description": "Failure message if status is failed."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Download URL for the completed dataset."
+    }
+  },
+  "required": ["id", "status"],
+  "additionalProperties": false
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.mockaroo.com/schemas/mockaroo-field-type.json",
+  "title": "Mockaroo Field Type",
+  "description": "Metadata describing one built-in Mockaroo field type as returned by /api/types.",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name of the field type."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of what the field type generates."
+    },
+    "category": {
+      "type": "string",
+      "description": "Catalog category (e.g. Name, Internet, Address, Business, Date, Money, Geographic)."
+    },
+    "parameters": {
+      "type": "array",
+      "description": "List of configurable parameters for this field type.",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

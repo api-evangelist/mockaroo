@@ -1,0 +1,108 @@
+name: Mockaroo Vocabulary
+description: >-
+  Controlled vocabulary for Mockaroo, mapping operational concepts (generation,
+  schemas, datasets, downloads) and capability dimensions (field-type catalog,
+  formats, plans, rate limits) into one terminology surface.
+url: https://www.mockaroo.com/docs
+created: '2026-05-30'
+modified: '2026-05-30'
+
+operational:
+  description: Operational concepts that show up across Mockaroo's REST API surface.
+  terms:
+    - name: Schema
+      description: >-
+        A saved, named collection of field specifications that describes the
+        structure of records to generate.
+    - name: Field
+      description: A single column in a Mockaroo schema, bound to a built-in field type.
+    - name: FieldType
+      description: >-
+        A built-in generator for a kind of value (Name, Internet, Address,
+        Business, Date, Money, Geographic, Phone, etc.).
+    - name: Dataset
+      description: >-
+        A named CSV or plain-text file uploaded to Mockaroo and used by schemas
+        as a lookup source via the Dataset Column field type.
+    - name: Project
+      description: A folder that groups related schemas and datasets together.
+    - name: Generation
+      description: A request to produce one or more records in a chosen output format.
+    - name: BackgroundJob
+      description: >-
+        An asynchronous generation request large enough to exceed synchronous
+        limits, returned as a download id that can be polled and cancelled.
+    - name: Download
+      description: >-
+        The artifact produced by a background generation job; tracked by id and
+        retrieved when status reaches success.
+    - name: Formula
+      description: >-
+        A small Mockaroo expression attached to a field that transforms the
+        generated value before output.
+
+capabilities:
+  description: Capability dimensions describing what Mockaroo offers as a platform.
+  terms:
+    - name: DataGeneration
+      description: Creation of realistic mock records on demand from a schema.
+    - name: SchemaManagement
+      description: Authoring, saving, and reusing schemas via the web UI or API.
+    - name: DatasetLookup
+      description: Driving generated values from uploaded reference datasets.
+    - name: MockAPI
+      description: Hosted mock endpoints that return generated records on demand.
+    - name: ApiKeyAuth
+      description: Per-account API key authentication via query or header.
+    - name: QuotaPlan
+      description: >-
+        Records-per-day and requests-per-day quotas attached to a plan (Free,
+        Silver, Gold, Enterprise).
+    - name: EnterpriseDeployment
+      description: Self-hosted Mockaroo image deployed inside a private cloud or datacenter.
+
+formats:
+  description: Output formats Mockaroo can emit via the generate endpoints.
+  terms:
+    - name: JSON
+      description: JSON object or array, controlled by the array parameter.
+    - name: CSV
+      description: Comma-separated values with optional header row.
+    - name: TXT
+      description: Tab-separated values.
+    - name: Custom
+      description: User-specified delimiter and quote character.
+    - name: SQL
+      description: SQL INSERT statements scoped to a named table.
+    - name: XML
+      description: XML document with a record-per-row structure.
+
+domains:
+  description: High-level categories of built-in field types in the Mockaroo catalog.
+  terms:
+    - name: Name
+      description: First names, last names, full names, usernames, prefixes, suffixes.
+    - name: Internet
+      description: Email addresses, URLs, IPv4/IPv6 addresses, MAC addresses, user agents.
+    - name: Address
+      description: Street, city, state, postal code, country, full addresses.
+    - name: Geographic
+      description: Latitude, longitude, time zones, continents, coordinate pairs.
+    - name: Business
+      description: Company names, industries, departments, job titles, SIC codes.
+    - name: Money
+      description: Currency codes, prices, amounts, credit-card numbers and types.
+    - name: Date
+      description: Dates, times, datetimes, durations, eras with configurable ranges.
+    - name: Identifiers
+      description: UUIDs, GUIDs, sequences, Medicare beneficiary IDs, custom IDs.
+    - name: Personal
+      description: Gender, age, ethnicity, language, locale.
+    - name: Phone
+      description: Phone numbers in international and country-specific formats.
+    - name: Health
+      description: Medical conditions, drug names, ICD codes, healthcare identifiers.
+    - name: Technology
+      description: Mobile devices, browsers, operating systems, app bundle IDs.
+    - name: Custom
+      description: User-defined lists, datasets, formulas, sequences, regex patterns.

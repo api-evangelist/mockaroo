@@ -1,0 +1,9 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "https://api.mockaroo.com/api/downloads/abc123?key=YOUR_API_KEY"
+  },
+  "response": {
+    "status": 204
+  }
+}

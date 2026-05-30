@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.mockaroo.com/api/datasets/products?key=YOUR_API_KEY",
+    "headers": {
+      "Content-Type": "text/csv"
+    },
+    "body": "sku,name,price\nA-100,Widget,9.99\nA-101,Gadget,14.99\n"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "name": "products",
+      "rows": 2
+    }
+  }
+}

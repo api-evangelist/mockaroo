@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.mockaroo.com/api/generate.custom?count=2&schema=Users&delimiter=%7C&quote_char=%22&key=YOUR_API_KEY"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "text/plain"
+    },
+    "body": "id|first_name|last_name\n1|\"Lara\"|\"Hopfer\"\n2|\"Devon\"|\"Quincey\"\n"
+  }
+}

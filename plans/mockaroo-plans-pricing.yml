@@ -1,0 +1,244 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Mockaroo
+providerId: mockaroo
+created: '2026-05-30'
+modified: '2026-05-30'
+reconciled: true
+tags:
+  - Test Data
+  - Mock Data
+  - Developer Tools
+  - SaaS
+description: >-
+  Mockaroo prices its hosted mock-data generation service through four annual
+  subscription tiers — Free, Silver, Gold, and Enterprise — each gated on
+  records-per-file, daily API generation quota, processing speed, and hosting
+  model. The Free tier covers small dev/test workflows; Silver and Gold expand
+  daily record quotas for production-grade test data pipelines; Enterprise
+  ships as a self-hosted Docker image with unlimited generation.
+sources:
+  - https://www.mockaroo.com/pricing
+  - https://www.mockaroo.com/plans
+  - https://www.mockaroo.com/docs
+
+plans:
+  - id: mockaroo-free
+    name: Free
+    type: freemium
+    description: >-
+      Free tier capped at 1,000 records per file and 200 API requests per day,
+      ideal for evaluation and small-scale local development.
+    entries:
+      - label: Records per file
+        name: records_per_file
+        type: quota
+        metric: records
+        limit: 1000
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+      - label: API requests per day
+        name: api_requests_per_day
+        type: quota
+        metric: request
+        limit: 200
+        timeFrame: day
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+      - label: Processing speed
+        name: processing_speed
+        type: flat
+        metric: speed
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '1x'
+        userMultiplied: false
+      - label: Annual subscription
+        name: annual_subscription
+        type: subscription
+        metric: year
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+    elements:
+      - name: All field types
+      - name: Schema management
+      - name: Datasets and projects
+      - name: Mock APIs
+      - name: Mockaroo.com hosting
+
+  - id: mockaroo-silver
+    name: Silver
+    type: subscription
+    description: >-
+      Silver tier at $60/year raises file size to 100,000 records, daily API
+      generation to 1,000,000 records, and processing speed to 8x.
+    entries:
+      - label: Records per file
+        name: records_per_file
+        type: quota
+        metric: records
+        limit: 100000
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'included'
+        userMultiplied: false
+      - label: API generation per day
+        name: api_records_per_day
+        type: quota
+        metric: records
+        limit: 1000000
+        timeFrame: day
+        geo: global
+        unit: 1
+        price: 'included'
+        userMultiplied: false
+      - label: Processing speed
+        name: processing_speed
+        type: flat
+        metric: speed
+        limit: 8
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '8x'
+        userMultiplied: false
+      - label: Annual subscription
+        name: annual_subscription
+        type: subscription
+        metric: year
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$60'
+        userMultiplied: false
+    elements:
+      - name: All field types
+      - name: Schema management
+      - name: Datasets and projects
+      - name: Mock APIs
+      - name: Mockaroo.com hosting
+
+  - id: mockaroo-gold
+    name: Gold
+    type: subscription
+    description: >-
+      Gold tier at $500/year raises file size to 10M records and daily API
+      generation to 10M records.
+    entries:
+      - label: Records per file
+        name: records_per_file
+        type: quota
+        metric: records
+        limit: 10000000
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'included'
+        userMultiplied: false
+      - label: API generation per day
+        name: api_records_per_day
+        type: quota
+        metric: records
+        limit: 10000000
+        timeFrame: day
+        geo: global
+        unit: 1
+        price: 'included'
+        userMultiplied: false
+      - label: Processing speed
+        name: processing_speed
+        type: flat
+        metric: speed
+        limit: 8
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '8x'
+        userMultiplied: false
+      - label: Annual subscription
+        name: annual_subscription
+        type: subscription
+        metric: year
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$500'
+        userMultiplied: false
+    elements:
+      - name: All field types
+      - name: Schema management
+      - name: Datasets and projects
+      - name: Mock APIs
+      - name: Mockaroo.com hosting
+
+  - id: mockaroo-enterprise
+    name: Enterprise
+    type: enterprise
+    description: >-
+      Enterprise tier at $7,500/year ships as a Docker image for private-cloud
+      or on-premises deployment with unlimited records, unlimited daily
+      generation, and 8x-or-higher processing speed.
+    entries:
+      - label: Records per file
+        name: records_per_file
+        type: quota
+        metric: records
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'unlimited'
+        userMultiplied: false
+      - label: API generation per day
+        name: api_records_per_day
+        type: quota
+        metric: records
+        limit: -1
+        timeFrame: day
+        geo: global
+        unit: 1
+        price: 'unlimited'
+        userMultiplied: false
+      - label: Processing speed
+        name: processing_speed
+        type: flat
+        metric: speed
+        limit: 8
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '8x or higher'
+        userMultiplied: false
+      - label: Annual subscription
+        name: annual_subscription
+        type: subscription
+        metric: year
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '$7,500'
+        userMultiplied: false
+    elements:
+      - name: Self-hosted Docker image
+      - name: Private cloud or datacenter hosting
+      - name: Unrestricted organization-wide access
+      - name: All field types
+      - name: Schema management
+      - name: Datasets and projects
+      - name: Mock APIs

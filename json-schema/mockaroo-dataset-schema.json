@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.mockaroo.com/schemas/mockaroo-dataset.json",
+  "title": "Mockaroo Dataset",
+  "description": "A named CSV or plain-text dataset uploaded to Mockaroo for use as a lookup source.",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique dataset name."
+    },
+    "filename": {
+      "type": "string",
+      "description": "Original filename of the uploaded dataset."
+    },
+    "project": {
+      "type": "string",
+      "description": "Project that owns the dataset."
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of rows in the dataset."
+    }
+  },
+  "additionalProperties": true
+}

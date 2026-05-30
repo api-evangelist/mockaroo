@@ -1,0 +1,10 @@
+[
+  { "name": "id", "type": "Row Number" },
+  { "name": "first_name", "type": "First Name", "percentBlank": 5 },
+  { "name": "last_name", "type": "Last Name" },
+  { "name": "email", "type": "Email Address", "formula": "field.toLowerCase()" },
+  { "name": "country", "type": "Country" },
+  { "name": "ip_address", "type": "IP Address v4" },
+  { "name": "salary", "type": "Number", "min": 30000, "max": 200000, "decimals": 0 },
+  { "name": "joined_on", "type": "Date", "min": "01/01/2018", "max": "12/31/2025", "format": "%Y-%m-%d" }
+]

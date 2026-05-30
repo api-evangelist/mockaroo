@@ -1,0 +1,83 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "Mockaroo API — Types"
+  description: >-
+    Types — discover the catalog of built-in field types Mockaroo can generate
+    (Name, Internet, Address, Business, Date, Currency, Geographic, and more).
+    1 operation. Lead operation: List Field Types. Self-contained Naftiko
+    capability covering one Mockaroo business surface.
+  tags:
+    - Mockaroo
+    - Test Data
+    - Types
+  created: "2026-05-30"
+  modified: "2026-05-30"
+
+binds:
+  - namespace: env
+    keys:
+      MOCKAROO_API_KEY: MOCKAROO_API_KEY
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "mockaroo-types"
+      baseUri: "https://api.mockaroo.com"
+      description: "Mockaroo Types catalog. Self-contained, no shared references."
+      authentication:
+        type: apikey
+        key: X-API-Key
+        value: "{{env.MOCKAROO_API_KEY}}"
+        placement: header
+      resources:
+        - name: "types"
+          path: "/api/types"
+          operations:
+            - name: "listTypes"
+              method: GET
+              description: "List the available built-in field types and their parameters."
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "mockaroo-types-rest"
+      port: 8080
+      description: "REST adapter for Mockaroo Types. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/types"
+          name: "types"
+          description: "REST surface for the field types catalog."
+          operations:
+            - method: GET
+              name: "listTypes"
+              description: "List the available built-in field types."
+              call: "mockaroo-types.listTypes"
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "mockaroo-types-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for Mockaroo Types. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "list-field-types"
+          description: "List the available built-in field types and their parameters."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "mockaroo-types.listTypes"
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,42 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.mockaroo.com/api/generate.json?count=3&array=true&key=YOUR_API_KEY",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": [
+      { "name": "id", "type": "Row Number" },
+      { "name": "first_name", "type": "First Name" },
+      { "name": "last_name", "type": "Last Name" },
+      { "name": "email", "type": "Email Address" },
+      { "name": "ip_address", "type": "IP Address v4" }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "id": 1,
+        "first_name": "Lara",
+        "last_name": "Hopfer",
+        "email": "lhopfer0@nih.gov",
+        "ip_address": "192.0.2.41"
+      },
+      {
+        "id": 2,
+        "first_name": "Devon",
+        "last_name": "Quincey",
+        "email": "dquincey1@imdb.com",
+        "ip_address": "198.51.100.7"
+      },
+      {
+        "id": 3,
+        "first_name": "Miguela",
+        "last_name": "Snowdon",
+        "email": "msnowdon2@nasa.gov",
+        "ip_address": "203.0.113.182"
+      }
+    ]
+  }
+}

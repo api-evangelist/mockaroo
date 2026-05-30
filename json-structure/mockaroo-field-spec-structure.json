@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/draft-00/schema",
+  "$id": "https://www.mockaroo.com/structures/mockaroo-field-spec.json",
+  "name": "MockarooFieldSpec",
+  "type": "object",
+  "description": "Inline field specification used to describe a single column in an ad-hoc Mockaroo generation request.",
+  "properties": {
+    "name": { "type": "string", "description": "Column name." },
+    "type": { "type": "string", "description": "Built-in Mockaroo field type." },
+    "percentBlank": { "type": "int32", "description": "Percentage of blank values to emit." },
+    "formula": { "type": "string", "description": "Mockaroo formula expression." }
+  },
+  "required": ["name", "type"]
+}

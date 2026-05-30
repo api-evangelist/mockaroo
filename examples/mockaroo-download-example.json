@@ -1,0 +1,7 @@
+{
+  "id": "abc123",
+  "status": "success",
+  "percentComplete": 100,
+  "recordsGenerated": 1000000,
+  "url": "https://api.mockaroo.com/api/downloads/abc123/file.csv"
+}

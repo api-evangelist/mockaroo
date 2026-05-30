@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.mockaroo.com/schemas/mockaroo-field-spec.json",
+  "title": "Mockaroo Field Spec",
+  "description": "Inline field specification used to drive ad-hoc generation requests without a saved schema.",
+  "type": "object",
+  "required": ["name", "type"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Column or property name for the generated field."
+    },
+    "type": {
+      "type": "string",
+      "description": "Built-in Mockaroo field type (e.g. 'First Name', 'Email Address', 'IP Address v4')."
+    },
+    "percentBlank": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Percentage of generated values that should be blank."
+    },
+    "formula": {
+      "type": "string",
+      "description": "Mockaroo formula expression to transform the generated value."
+    }
+  },
+  "additionalProperties": true
+}

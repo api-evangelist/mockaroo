@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/draft-00/schema",
+  "$id": "https://www.mockaroo.com/structures/mockaroo-download.json",
+  "name": "MockarooDownload",
+  "type": "object",
+  "description": "Asynchronous background download job status.",
+  "properties": {
+    "id": { "type": "string", "description": "Job identifier." },
+    "status": {
+      "type": "string",
+      "description": "Job state.",
+      "enum": ["queued", "in_progress", "success", "failed"]
+    },
+    "percentComplete": { "type": "double", "description": "Percent of records generated." },
+    "recordsGenerated": { "type": "int64", "description": "Records generated so far." },
+    "error": { "type": "string", "description": "Failure message." },
+    "url": { "type": "string", "description": "Download URL for the completed dataset." }
+  },
+  "required": ["id", "status"]
+}

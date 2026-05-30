@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/draft-00/schema",
+  "$id": "https://www.mockaroo.com/structures/mockaroo-dataset.json",
+  "name": "MockarooDataset",
+  "type": "object",
+  "description": "Named CSV or plain-text dataset uploaded to Mockaroo as a lookup source.",
+  "properties": {
+    "name": { "type": "string", "description": "Dataset name." },
+    "filename": { "type": "string", "description": "Original filename." },
+    "project": { "type": "string", "description": "Owning project." },
+    "rows": { "type": "int64", "description": "Row count." }
+  },
+  "required": ["name"]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/draft-00/schema",
+  "$id": "https://www.mockaroo.com/structures/mockaroo-field-type.json",
+  "name": "MockarooFieldType",
+  "type": "object",
+  "description": "Metadata describing a single built-in Mockaroo field type, as returned by /api/types.",
+  "properties": {
+    "name": { "type": "string", "description": "Display name." },
+    "description": { "type": "string", "description": "What the field generates." },
+    "category": { "type": "string", "description": "Catalog category." },
+    "parameters": {
+      "type": "array",
+      "description": "Configurable parameters for this field type.",
+      "items": { "type": "object" }
+    }
+  },
+  "required": ["name"]
+}

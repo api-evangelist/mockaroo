@@ -1,0 +1,136 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Mockaroo
+providerId: mockaroo
+created: '2026-05-30'
+modified: '2026-05-30'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Test Data
+  - Mock Data
+  - Developer Tools
+description: >-
+  FOCUS-aligned FinOps for Mockaroo: annual tiered subscription with per-key
+  daily record and request quotas, plus a flat-fee Enterprise self-hosted
+  deployment.
+sources:
+  - https://www.mockaroo.com/pricing
+  - https://www.mockaroo.com/plans
+  - https://www.mockaroo.com/docs
+
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+
+publisherName: Mockaroo, LLC
+serviceCategory: Developer Tools
+
+billingModel:
+  pricingCategory: Tiered Subscription
+  billingFrequency: Annual
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+
+focusColumns:
+  ServiceName: Mockaroo
+  ServiceCategory: Developer Tools
+  ServiceSubcategory: Test Data Generation
+  ProviderName: Mockaroo
+  PublisherName: Mockaroo, LLC
+  InvoiceIssuerName: Mockaroo, LLC
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+
+meters:
+  - name: plan_subscription
+    unit: year
+    aggregation: sum
+    dimensions:
+      - plan_tier
+    notes: >-
+      Annual subscription fee per account; tier-priced ($0 Free / $60 Silver /
+      $500 Gold / $7,500 Enterprise).
+
+  - name: api_requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api_key
+      - endpoint
+      - format
+    notes: >-
+      Daily count of REST API requests against /api/generate.* and other
+      endpoints. Counted against the plan's daily request quota (Free) or
+      record quota (Silver, Gold, Enterprise).
+
+  - name: records_generated
+    unit: record
+    aggregation: sum
+    dimensions:
+      - api_key
+      - format
+      - schema
+    notes: >-
+      Daily total of generated records. Drives quota enforcement on Silver,
+      Gold, and Enterprise plans.
+
+  - name: background_jobs
+    unit: job
+    aggregation: count
+    dimensions:
+      - api_key
+      - status
+    notes: >-
+      Number of asynchronous background generation jobs initiated and tracked
+      via /api/downloads/{id}.
+
+  - name: enterprise_seats
+    unit: seat
+    aggregation: max
+    dimensions:
+      - organization
+    notes: >-
+      Active users on an Enterprise self-hosted Docker deployment; not
+      individually metered but observable for internal allocation.
+
+principles:
+  - name: Visibility
+    description: >-
+      View per-account usage and remaining quota in the My Account dashboard
+      at mockaroo.com. The mockaroo-node SDK surfaces quota exhaustion via
+      UsageLimitExceededError, which downstream systems can log to attribute
+      consumption per service. Enterprise Docker deployments expose container
+      logs and request metrics for self-hosted observability.
+
+  - name: Allocation
+    description: >-
+      Tag spend by issuing distinct API keys (one per environment, team, or
+      product) and attributing the daily quota consumption back to the owning
+      team. For Enterprise Docker, allocate compute and license cost across
+      teams using internal cost-center mapping on the host infrastructure.
+
+  - name: Optimization
+    description: >-
+      Right-size the plan against historical records-per-day usage rather than
+      peak; downgrade Gold → Silver when daily generation consistently fits
+      under 1M records. Use saved schemas and background jobs (background=true)
+      instead of repeated synchronous calls — this both stays inside the
+      synchronous-cap on Free and avoids burst patterns that exhaust daily
+      quota mid-month. For Enterprise, fix the annual flat fee and absorb
+      additional internal demand without per-record cost.
+
+  - name: Accountability
+    description: >-
+      Plan renewal is annual and per-account, so a single owner (typically the
+      engineering productivity or QA team lead) owns the Mockaroo line in the
+      vendor budget. Renewal-window reviews should compare prior-year peak
+      daily generation to the plan ceiling and confirm the right tier going
+      into the next term.

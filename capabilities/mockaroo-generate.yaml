@@ -1,0 +1,468 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "Mockaroo API — Generate"
+  description: >-
+    Generate — produce realistic mock records on demand in JSON, CSV, TXT,
+    custom-delimited, SQL, and XML formats. 6 operations. Lead operation:
+    Generate Records As JSON. Self-contained Naftiko capability covering one
+    Mockaroo business surface.
+  tags:
+    - Mockaroo
+    - Test Data
+    - Generate
+  created: "2026-05-30"
+  modified: "2026-05-30"
+
+binds:
+  - namespace: env
+    keys:
+      MOCKAROO_API_KEY: MOCKAROO_API_KEY
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "mockaroo-generate"
+      baseUri: "https://api.mockaroo.com"
+      description: "Mockaroo Generate API. Self-contained, no shared references."
+      authentication:
+        type: apikey
+        key: X-API-Key
+        value: "{{env.MOCKAROO_API_KEY}}"
+        placement: header
+      resources:
+        - name: "generate-json"
+          path: "/api/generate.json"
+          operations:
+            - name: "generateJson"
+              method: POST
+              description: "Generate records as JSON."
+              inputParameters:
+                - name: count
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of records to generate."
+                - name: schema
+                  in: query
+                  type: string
+                  required: false
+                  description: "Name of a saved Mockaroo schema."
+                - name: array
+                  in: query
+                  type: boolean
+                  required: false
+                  description: "Force a JSON array response."
+                - name: include_nulls
+                  in: query
+                  type: boolean
+                  required: false
+                  description: "Emit null-valued fields."
+                - name: background
+                  in: query
+                  type: boolean
+                  required: false
+                  description: "Run the generation as a background job."
+                - name: body
+                  in: body
+                  type: object
+                  required: false
+                  description: "Inline list of field specifications."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: "generate-csv"
+          path: "/api/generate.csv"
+          operations:
+            - name: "generateCsv"
+              method: POST
+              description: "Generate records as CSV."
+              inputParameters:
+                - name: count
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of records to generate."
+                - name: schema
+                  in: query
+                  type: string
+                  required: false
+                  description: "Name of a saved Mockaroo schema."
+                - name: include_header
+                  in: query
+                  type: boolean
+                  required: false
+                  description: "Include a header row."
+                - name: line_ending
+                  in: query
+                  type: string
+                  required: false
+                  description: "Line ending style (unix or windows)."
+                - name: background
+                  in: query
+                  type: boolean
+                  required: false
+                  description: "Run the generation as a background job."
+                - name: body
+                  in: body
+                  type: object
+                  required: false
+                  description: "Inline list of field specifications."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: "generate-txt"
+          path: "/api/generate.txt"
+          operations:
+            - name: "generateTxt"
+              method: POST
+              description: "Generate records as tab-separated text."
+              inputParameters:
+                - name: count
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of records to generate."
+                - name: schema
+                  in: query
+                  type: string
+                  required: false
+                  description: "Name of a saved Mockaroo schema."
+                - name: include_header
+                  in: query
+                  type: boolean
+                  required: false
+                  description: "Include a header row."
+                - name: line_ending
+                  in: query
+                  type: string
+                  required: false
+                  description: "Line ending style."
+                - name: background
+                  in: query
+                  type: boolean
+                  required: false
+                  description: "Run the generation as a background job."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: "generate-custom"
+          path: "/api/generate.custom"
+          operations:
+            - name: "generateCustom"
+              method: POST
+              description: "Generate records with a custom delimiter and quote character."
+              inputParameters:
+                - name: count
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of records to generate."
+                - name: schema
+                  in: query
+                  type: string
+                  required: false
+                  description: "Name of a saved Mockaroo schema."
+                - name: delimiter
+                  in: query
+                  type: string
+                  required: false
+                  description: "Field delimiter."
+                - name: quote_char
+                  in: query
+                  type: string
+                  required: false
+                  description: "Quote character."
+                - name: include_header
+                  in: query
+                  type: boolean
+                  required: false
+                  description: "Include a header row."
+                - name: line_ending
+                  in: query
+                  type: string
+                  required: false
+                  description: "Line ending style."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: "generate-sql"
+          path: "/api/generate.sql"
+          operations:
+            - name: "generateSql"
+              method: POST
+              description: "Generate records as SQL INSERT statements."
+              inputParameters:
+                - name: count
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of records to generate."
+                - name: schema
+                  in: query
+                  type: string
+                  required: false
+                  description: "Name of a saved Mockaroo schema."
+                - name: table
+                  in: query
+                  type: string
+                  required: false
+                  description: "Target SQL table name."
+                - name: background
+                  in: query
+                  type: boolean
+                  required: false
+                  description: "Run the generation as a background job."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: "generate-xml"
+          path: "/api/generate.xml"
+          operations:
+            - name: "generateXml"
+              method: POST
+              description: "Generate records as an XML document."
+              inputParameters:
+                - name: count
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of records to generate."
+                - name: schema
+                  in: query
+                  type: string
+                  required: false
+                  description: "Name of a saved Mockaroo schema."
+                - name: background
+                  in: query
+                  type: boolean
+                  required: false
+                  description: "Run the generation as a background job."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "mockaroo-generate-rest"
+      port: 8080
+      description: "REST adapter for Mockaroo Generate. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/generate/json"
+          name: "generate-json"
+          description: "REST surface for JSON generation."
+          operations:
+            - method: POST
+              name: "generateJson"
+              description: "Generate records as JSON."
+              call: "mockaroo-generate.generateJson"
+              with:
+                count: "rest.count"
+                schema: "rest.schema"
+                array: "rest.array"
+                include_nulls: "rest.include_nulls"
+                background: "rest.background"
+                body: "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: "/v1/generate/csv"
+          name: "generate-csv"
+          description: "REST surface for CSV generation."
+          operations:
+            - method: POST
+              name: "generateCsv"
+              description: "Generate records as CSV."
+              call: "mockaroo-generate.generateCsv"
+              with:
+                count: "rest.count"
+                schema: "rest.schema"
+                include_header: "rest.include_header"
+                line_ending: "rest.line_ending"
+                background: "rest.background"
+                body: "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: "/v1/generate/txt"
+          name: "generate-txt"
+          description: "REST surface for tab-separated text generation."
+          operations:
+            - method: POST
+              name: "generateTxt"
+              description: "Generate records as tab-separated text."
+              call: "mockaroo-generate.generateTxt"
+              with:
+                count: "rest.count"
+                schema: "rest.schema"
+                include_header: "rest.include_header"
+                line_ending: "rest.line_ending"
+                background: "rest.background"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: "/v1/generate/custom"
+          name: "generate-custom"
+          description: "REST surface for custom-delimited generation."
+          operations:
+            - method: POST
+              name: "generateCustom"
+              description: "Generate records with a custom delimiter."
+              call: "mockaroo-generate.generateCustom"
+              with:
+                count: "rest.count"
+                schema: "rest.schema"
+                delimiter: "rest.delimiter"
+                quote_char: "rest.quote_char"
+                include_header: "rest.include_header"
+                line_ending: "rest.line_ending"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: "/v1/generate/sql"
+          name: "generate-sql"
+          description: "REST surface for SQL INSERT generation."
+          operations:
+            - method: POST
+              name: "generateSql"
+              description: "Generate records as SQL INSERT statements."
+              call: "mockaroo-generate.generateSql"
+              with:
+                count: "rest.count"
+                schema: "rest.schema"
+                table: "rest.table"
+                background: "rest.background"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: "/v1/generate/xml"
+          name: "generate-xml"
+          description: "REST surface for XML generation."
+          operations:
+            - method: POST
+              name: "generateXml"
+              description: "Generate records as an XML document."
+              call: "mockaroo-generate.generateXml"
+              with:
+                count: "rest.count"
+                schema: "rest.schema"
+                background: "rest.background"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "mockaroo-generate-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for Mockaroo Generate. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "generate-json-records"
+          description: "Generate records as JSON."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "mockaroo-generate.generateJson"
+          with:
+            count: "tools.count"
+            schema: "tools.schema"
+            array: "tools.array"
+            include_nulls: "tools.include_nulls"
+            background: "tools.background"
+            body: "tools.body"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: "generate-csv-records"
+          description: "Generate records as CSV."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "mockaroo-generate.generateCsv"
+          with:
+            count: "tools.count"
+            schema: "tools.schema"
+            include_header: "tools.include_header"
+            line_ending: "tools.line_ending"
+            background: "tools.background"
+            body: "tools.body"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: "generate-tab-separated-records"
+          description: "Generate records as tab-separated text."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "mockaroo-generate.generateTxt"
+          with:
+            count: "tools.count"
+            schema: "tools.schema"
+            include_header: "tools.include_header"
+            line_ending: "tools.line_ending"
+            background: "tools.background"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: "generate-custom-delimited-records"
+          description: "Generate records with a custom delimiter."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "mockaroo-generate.generateCustom"
+          with:
+            count: "tools.count"
+            schema: "tools.schema"
+            delimiter: "tools.delimiter"
+            quote_char: "tools.quote_char"
+            include_header: "tools.include_header"
+            line_ending: "tools.line_ending"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: "generate-sql-inserts"
+          description: "Generate records as SQL INSERT statements."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "mockaroo-generate.generateSql"
+          with:
+            count: "tools.count"
+            schema: "tools.schema"
+            table: "tools.table"
+            background: "tools.background"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: "generate-xml-records"
+          description: "Generate records as an XML document."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "mockaroo-generate.generateXml"
+          with:
+            count: "tools.count"
+            schema: "tools.schema"
+            background: "tools.background"
+          outputParameters:
+            - type: object
+              mapping: "$."
