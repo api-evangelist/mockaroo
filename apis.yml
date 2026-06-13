@@ -1,24 +1,21 @@
 aid: mockaroo
 name: Mockaroo
 description: >-
-  Mockaroo is a realistic mock data generator and API mocking service used by
-  developers and QA teams to produce JSON, CSV, TXT, custom-delimited, SQL,
-  and XML test data. The platform combines a schema designer, 150+ built-in
-  field types (Name, Internet, Address, Business, Date, Currency, Geographic,
-  Phone, Health, Technology, and more), named datasets used as lookup sources,
-  hosted mock APIs, formulas, projects, AI-assisted field generation,
-  de-identification, and a REST API for programmatic generation. Mockaroo
-  ships in four tiers (Free, Silver, Gold, Enterprise), with the Enterprise
-  tier available as a Docker image for self-hosted, unlimited generation.
+  Mockaroo is a realistic mock data generator and API mocking service used by developers and QA teams to produce JSON,
+  CSV, TXT, custom-delimited, SQL, and XML test data. The platform combines a schema designer, 150+ built-in field types
+  (Name, Internet, Address, Business, Date, Currency, Geographic, Phone, Health, Technology, and more), named datasets
+  used as lookup sources, hosted mock APIs, formulas, projects, AI-assisted field generation, de-identification, and a
+  REST API for programmatic generation. Mockaroo ships in four tiers (Free, Silver, Gold, Enterprise), with the
+  Enterprise tier available as a Docker image for self-hosted, unlimited generation.
 url: https://www.mockaroo.com/docs
 humanURL: https://www.mockaroo.com
 baseURL: https://api.mockaroo.com
-image: https://www.mockaroo.com/assets/logo.svg
-specificationVersion: '0.20'
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+specificationVersion: '0.19'
 type: Index
 access: 3rd-Party
-created: '2026-05-28'
-modified: '2026-05-30'
+created: '2026-06-13'
+modified: '2026-06-13'
 x-type: company
 x-source: public-apis/public-apis
 x-category: Test Data
@@ -35,16 +32,13 @@ tags:
   - Schemas
   - Datasets
   - Public APIs
-
 apis:
   - aid: mockaroo:mockaroo
     name: Mockaroo API
     description: >-
-      REST API for generating realistic mock data records in JSON, CSV, TXT,
-      custom-delimited, SQL, and XML formats. Supports saved schemas, inline
-      field specifications, 150+ built-in field types, named datasets as
-      lookup sources, and asynchronous background generation jobs for large
-      requests.
+      REST API for generating realistic mock data records in JSON, CSV, TXT, custom-delimited, SQL, and XML formats.
+      Supports saved schemas, inline field specifications, 150+ built-in field types, named datasets as lookup sources,
+      and asynchronous background generation jobs for large requests.
     humanURL: https://www.mockaroo.com/docs
     baseURL: https://api.mockaroo.com
     tags:
@@ -63,14 +57,6 @@ apis:
         url: https://www.mockaroo.com/docs
       - type: RateLimits
         url: rate-limits/mockaroo-rate-limits.yml
-      - type: NaftikoCapability
-        url: capabilities/mockaroo-generate.yaml
-      - type: NaftikoCapability
-        url: capabilities/mockaroo-types.yaml
-      - type: NaftikoCapability
-        url: capabilities/mockaroo-datasets.yaml
-      - type: NaftikoCapability
-        url: capabilities/mockaroo-downloads.yaml
       - type: JSONSchema
         url: json-schema/mockaroo-field-spec-schema.json
       - type: JSONSchema
@@ -117,7 +103,6 @@ apis:
         url: examples/mockaroo-download-example.json
       - type: Example
         url: examples/mockaroo-dataset-example.json
-
 common:
   - type: Website
     url: https://www.mockaroo.com
@@ -133,6 +118,12 @@ common:
     url: plans/mockaroo-plans-pricing.yml
   - type: RateLimits
     url: rate-limits/mockaroo-rate-limits.yml
+  - type: FinOps
+    url: finops/mockaroo-finops.yml
+  - type: Blog
+    url: https://www.mockaroo.com/blog
+  - type: X
+    url: https://x.com/mockaroodev
   - type: TermsOfService
     url: https://www.mockaroo.com/terms
   - type: PrivacyPolicy
@@ -174,78 +165,52 @@ common:
     url: vocabulary/mockaroo-vocabulary.yml
   - type: JSONLD
     url: json-ld/mockaroo-context.jsonld
-  - type: NaftikoCapability
-    url: capabilities/mockaroo-generate.yaml
   - type: Features
     data:
       - name: Realistic Mock Data Generation
         description: >-
-          Generate realistic test records using more than 150 built-in field
-          types spanning names, addresses, business, internet, dates,
-          currency, geography, phone, health, and technology categories.
+          Generate realistic test records using more than 150 built-in field types spanning names, addresses, business,
+          internet, dates, currency, geography, phone, health, and technology categories.
       - name: Multiple Output Formats
-        description: >-
-          Export generated data as JSON, CSV, tab-separated TXT, custom
-          delimiter, SQL INSERT statements, or XML.
+        description: Export generated data as JSON, CSV, tab-separated TXT, custom delimiter, SQL INSERT statements, or XML.
       - name: Schema Designer
-        description: >-
-          Design, save, and reuse schemas in the web UI, then call them by
-          name from the REST API.
+        description: Design, save, and reuse schemas in the web UI, then call them by name from the REST API.
       - name: Datasets As Lookup Sources
-        description: >-
-          Upload CSV or plain-text datasets and use them as lookup sources in
-          schemas via the Dataset Column field type.
+        description: Upload CSV or plain-text datasets and use them as lookup sources in schemas via the Dataset Column field type.
       - name: Mock APIs
-        description: >-
-          Host mock REST endpoints that return generated records on demand,
-          including configurable error conditions.
+        description: Host mock REST endpoints that return generated records on demand, including configurable error conditions.
       - name: Background Generation
         description: >-
-          Submit large generation requests asynchronously and poll
-          /api/downloads/{id} for status, progress, and the final download
-          URL.
+          Submit large generation requests asynchronously and poll /api/downloads/{id} for status, progress, and the
+          final download URL.
       - name: Formulas And Custom Functions
-        description: >-
-          Transform generated values with reusable Mockaroo formula
-          expressions and custom functions.
+        description: Transform generated values with reusable Mockaroo formula expressions and custom functions.
       - name: AI Field Generation
-        description: >-
-          Generate field definitions and custom types using AI assistance in
-          the schema editor.
+        description: Generate field definitions and custom types using AI assistance in the schema editor.
       - name: De-identification
-        description: >-
-          Anonymize sensitive datasets via Mockaroo's de-identification
-          tooling.
+        description: Anonymize sensitive datasets via Mockaroo's de-identification tooling.
       - name: Enterprise Docker Deployment
         description: >-
-          Run Mockaroo as a self-hosted Docker container inside a private
-          cloud or datacenter for unlimited, organization-wide generation.
+          Run Mockaroo as a self-hosted Docker container inside a private cloud or datacenter for unlimited,
+          organization-wide generation.
   - type: UseCases
     data:
       - name: UI Prototyping
         description: >-
-          Power UI prototypes with realistic request/response data so design
-          reviews surface real edge cases (long names, Unicode, blanks).
+          Power UI prototypes with realistic request/response data so design reviews surface real edge cases (long
+          names, Unicode, blanks).
       - name: Load And Performance Testing
-        description: >-
-          Generate millions of realistic records to populate staging
-          databases for load and performance testing.
+        description: Generate millions of realistic records to populate staging databases for load and performance testing.
       - name: QA Test Data
-        description: >-
-          Produce repeatable, schema-driven test data for automated test
-          suites and continuous integration pipelines.
+        description: Produce repeatable, schema-driven test data for automated test suites and continuous integration pipelines.
       - name: Demo And Sales Environments
-        description: >-
-          Stand up demo environments with believable customer data without
-          touching production.
+        description: Stand up demo environments with believable customer data without touching production.
       - name: Data Anonymization
-        description: >-
-          Replace sensitive production data with statistically similar but
-          synthetic records for safe sharing.
+        description: Replace sensitive production data with statistically similar but synthetic records for safe sharing.
       - name: API Mocking
         description: >-
-          Front-end and integration teams hit Mockaroo-hosted mock APIs while
-          back-end services are still under construction.
+          Front-end and integration teams hit Mockaroo-hosted mock APIs while back-end services are still under
+          construction.
   - type: Integrations
     data:
       - name: Node.js
@@ -265,13 +230,9 @@ common:
       - name: Kafka
         description: mockaroo2kafka scripts feed generated records into Kafka topics for streaming tests.
       - name: MCP
-        description: >-
-          Community mockaroo-mcp MCP server exposes Mockaroo's generate
-          surface to LLM agents.
+        description: Community mockaroo-mcp MCP server exposes Mockaroo's generate surface to LLM agents.
       - name: Docker
-        description: >-
-          Mockaroo Enterprise is distributed as a Docker image for
-          self-hosted deployment.
+        description: Mockaroo Enterprise is distributed as a Docker image for self-hosted deployment.
   - type: Solutions
     data:
       - name: Free
@@ -282,7 +243,6 @@ common:
         description: $500/year. 10,000,000 records per file, 10,000,000 records per day.
       - name: Enterprise
         description: $7,500/year. Self-hosted Docker, unlimited generation, organization-wide access.
-
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
