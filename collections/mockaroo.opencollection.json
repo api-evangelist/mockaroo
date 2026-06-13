@@ -1,0 +1,403 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mockaroo API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Field Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mockaroo.com/api/types"
+          },
+          "docs": "Return the catalog of built-in field types Mockaroo can generate, including each type's name, category, and supported parameters."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Generate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Records As JSON",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mockaroo.com/api/generate.json",
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to generate."
+              },
+              {
+                "name": "schema",
+                "value": "",
+                "type": "query",
+                "description": "Name of a saved Mockaroo schema to generate from."
+              },
+              {
+                "name": "array",
+                "value": "",
+                "type": "query",
+                "description": "Force a JSON array response even when count=1."
+              },
+              {
+                "name": "include_nulls",
+                "value": "",
+                "type": "query",
+                "description": "Emit null-valued JSON fields instead of omitting them."
+              },
+              {
+                "name": "background",
+                "value": "",
+                "type": "query",
+                "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate records using either a saved schema (via the schema parameter) or an inline list of field specifications supplied in the request body."
+        },
+        {
+          "info": {
+            "name": "Generate Records As CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mockaroo.com/api/generate.csv",
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to generate."
+              },
+              {
+                "name": "schema",
+                "value": "",
+                "type": "query",
+                "description": "Name of a saved Mockaroo schema to generate from."
+              },
+              {
+                "name": "include_header",
+                "value": "",
+                "type": "query",
+                "description": "Include a header row in CSV/TXT/custom output."
+              },
+              {
+                "name": "line_ending",
+                "value": "",
+                "type": "query",
+                "description": "Line ending style for text-based formats."
+              },
+              {
+                "name": "background",
+                "value": "",
+                "type": "query",
+                "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate records as comma-separated values."
+        },
+        {
+          "info": {
+            "name": "Generate Records As Tab-Separated Text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mockaroo.com/api/generate.txt",
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to generate."
+              },
+              {
+                "name": "schema",
+                "value": "",
+                "type": "query",
+                "description": "Name of a saved Mockaroo schema to generate from."
+              },
+              {
+                "name": "include_header",
+                "value": "",
+                "type": "query",
+                "description": "Include a header row in CSV/TXT/custom output."
+              },
+              {
+                "name": "line_ending",
+                "value": "",
+                "type": "query",
+                "description": "Line ending style for text-based formats."
+              },
+              {
+                "name": "background",
+                "value": "",
+                "type": "query",
+                "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan."
+              }
+            ]
+          },
+          "docs": "Generate records as tab-separated text."
+        },
+        {
+          "info": {
+            "name": "Generate Records With A Custom Delimiter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mockaroo.com/api/generate.custom",
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to generate."
+              },
+              {
+                "name": "schema",
+                "value": "",
+                "type": "query",
+                "description": "Name of a saved Mockaroo schema to generate from."
+              },
+              {
+                "name": "delimiter",
+                "value": "",
+                "type": "query",
+                "description": "Field delimiter for /api/generate.custom."
+              },
+              {
+                "name": "quote_char",
+                "value": "",
+                "type": "query",
+                "description": "Quote character for /api/generate.custom."
+              },
+              {
+                "name": "include_header",
+                "value": "",
+                "type": "query",
+                "description": "Include a header row in CSV/TXT/custom output."
+              },
+              {
+                "name": "line_ending",
+                "value": "",
+                "type": "query",
+                "description": "Line ending style for text-based formats."
+              }
+            ]
+          },
+          "docs": "Generate records using a configurable delimiter and quote character."
+        },
+        {
+          "info": {
+            "name": "Generate Records As SQL Inserts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mockaroo.com/api/generate.sql",
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to generate."
+              },
+              {
+                "name": "schema",
+                "value": "",
+                "type": "query",
+                "description": "Name of a saved Mockaroo schema to generate from."
+              },
+              {
+                "name": "table",
+                "value": "",
+                "type": "query",
+                "description": "Target table name for INSERT statements."
+              },
+              {
+                "name": "background",
+                "value": "",
+                "type": "query",
+                "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan."
+              }
+            ]
+          },
+          "docs": "Generate records as SQL INSERT statements."
+        },
+        {
+          "info": {
+            "name": "Generate Records As XML",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mockaroo.com/api/generate.xml",
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to generate."
+              },
+              {
+                "name": "schema",
+                "value": "",
+                "type": "query",
+                "description": "Name of a saved Mockaroo schema to generate from."
+              },
+              {
+                "name": "background",
+                "value": "",
+                "type": "query",
+                "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan."
+              }
+            ]
+          },
+          "docs": "Generate records as an XML document."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload Or Replace A Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mockaroo.com/api/datasets/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the dataset."
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "query",
+                "description": "Optional original filename for the uploaded dataset."
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query",
+                "description": "Optional project name in which to store the dataset."
+              }
+            ]
+          },
+          "docs": "Upload a CSV or plain-text dataset under the given name. The dataset can then be used as a lookup source in schemas via the Dataset Column type."
+        },
+        {
+          "info": {
+            "name": "Delete A Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mockaroo.com/api/datasets/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the dataset."
+              }
+            ]
+          },
+          "docs": "Remove the dataset with the given name."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Downloads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Background Download Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mockaroo.com/api/downloads/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the background download job."
+              }
+            ]
+          },
+          "docs": "Retrieve the status and progress of a background generation job initiated with background=true."
+        },
+        {
+          "info": {
+            "name": "Cancel Background Download",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mockaroo.com/api/downloads/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the background download job."
+              }
+            ]
+          },
+          "docs": "Cancel or remove a background download job."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
