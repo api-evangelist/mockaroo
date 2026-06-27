@@ -1,0 +1,14 @@
+{
+  "repo": "mockaroo",
+  "feeds": [
+    {
+      "source": "https://www.mockaroo.com/blog",
+      "feed_url": "",
+      "title": "Mockaroo Blog",
+      "saved": 0,
+      "note": "No RSS/Atom feed resolved (tried /feed/, /rss/, /feed.xml, /atom.xml, /index.xml); HTML scrape of /blog returned only SPA navigation/footer chrome with no post links."
+    }
+  ],
+  "fetched": "2026-06-21T17:00:00Z",
+  "post_count": 0
+}

@@ -73,42 +73,42 @@ apis:
         url: json-structure/mockaroo-download-structure.json
       - type: JSONStructure
         url: json-structure/mockaroo-dataset-structure.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-list-types-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-generate-json-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-generate-csv-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-generate-txt-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-generate-custom-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-generate-sql-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-generate-xml-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-upload-dataset-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-delete-dataset-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-get-download-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-cancel-download-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-field-spec-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-field-type-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-download-example.json
-      - type: Example
+      - type: Examples
         url: examples/mockaroo-dataset-example.json
 common:
   - type: Website
     url: https://www.mockaroo.com
   - type: Documentation
     url: https://www.mockaroo.com/docs
-  - type: SignUp
+  - type: Signup
     url: https://www.mockaroo.com/users/sign_up
   - type: Login
     url: https://www.mockaroo.com/users/sign_in
@@ -138,25 +138,25 @@ common:
   - type: GitHubRepository
     name: mockaroo-enterprise
     url: https://github.com/mockaroo/mockaroo-enterprise
-  - type: SDK
+  - type: SDKs
     name: mockaroo-node (Official Node.js client)
     url: https://github.com/mockaroo/mockaroo-node
-  - type: SDK
+  - type: SDKs
     name: NMockaroo (C#)
     url: https://github.com/amogram/NMockaroo
-  - type: SDK
+  - type: SDKs
     name: Mockaroo.NET (C#)
     url: https://github.com/Ackara/Mockaroo.NET
-  - type: SDK
+  - type: SDKs
     name: mockaroo-python (Python)
     url: https://github.com/Scarvy/mockaroo-python
-  - type: SDK
+  - type: SDKs
     name: mockaRoo (R)
     url: https://github.com/lockedata/mockaRoo
-  - type: SDK
+  - type: SDKs
     name: mockaroo.api (Java)
     url: https://github.com/djhvscf/mockaroo.api
-  - type: SDK
+  - type: SDKs
     name: mockaroo-connector (MuleSoft)
     url: https://github.com/djuang1/mockaroo-connector
   - type: SpectralRules
