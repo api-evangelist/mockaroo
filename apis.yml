@@ -104,6 +104,10 @@ apis:
       - type: Examples
         url: examples/mockaroo-dataset-example.json
 common:
+  - type: DomainSecurity
+    url: security/mockaroo-domain-security.yml
+  - type: Authentication
+    url: authentication/mockaroo-authentication.yml
   - type: Website
     url: https://www.mockaroo.com
   - type: Documentation

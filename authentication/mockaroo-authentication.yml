@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/mockaroo-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: apiKeyQuery
+  type: apiKey
+  in: query
+  parameter: key
+  description: Mockaroo API key passed as a query parameter.
+  sources:
+  - openapi/mockaroo-openapi.yml
+- name: apiKeyHeader
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  description: Mockaroo API key passed as a request header.
+  sources:
+  - openapi/mockaroo-openapi.yml
