@@ -9,6 +9,6 @@
       "note": "No RSS/Atom feed resolved (tried /feed/, /rss/, /feed.xml, /atom.xml, /index.xml); HTML scrape of /blog returned only SPA navigation/footer chrome with no post links."
     }
   ],
-  "fetched": "2026-06-21T17:00:00Z",
+  "fetched": "2026-07-04T13:02:52Z",
   "post_count": 0
 }
