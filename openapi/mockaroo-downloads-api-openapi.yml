@@ -1,0 +1,113 @@
+openapi: 3.1.0
+info:
+  title: Mockaroo Datasets Downloads API
+  version: '1.0'
+  summary: Realistic Mock Data Generation
+  description: Mockaroo provides a REST API for generating realistic mock data on demand using over 150 built-in field types. The API supports schema-based and field-spec-based generation, multiple output formats (JSON, CSV, TXT, custom-delimited, SQL, XML), background jobs for large requests, and management of named datasets used as lookup sources during generation.
+  contact:
+    name: Mockaroo Support
+    url: https://www.mockaroo.com/support
+  license:
+    name: Mockaroo Terms of Service
+    url: https://www.mockaroo.com/terms
+servers:
+- url: https://api.mockaroo.com
+  description: Mockaroo production API
+security:
+- apiKeyQuery: []
+- apiKeyHeader: []
+tags:
+- name: Downloads
+  description: Manage long-running background generation jobs.
+paths:
+  /api/downloads/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Identifier of the background download job.
+    get:
+      tags:
+      - Downloads
+      operationId: getDownload
+      summary: Get Background Download Status
+      description: Retrieve the status and progress of a background generation job initiated with background=true.
+      responses:
+        '200':
+          description: Current status of the background download job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Download'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Download job not found.
+    delete:
+      tags:
+      - Downloads
+      operationId: cancelDownload
+      summary: Cancel Background Download
+      description: Cancel or remove a background download job.
+      responses:
+        '204':
+          description: Download job canceled.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Download:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - queued
+          - in_progress
+          - success
+          - failed
+        percentComplete:
+          type: number
+        recordsGenerated:
+          type: integer
+        error:
+          type: string
+        url:
+          type: string
+          format: uri
+      description: Status of a background generation job.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: string
+      description: Standard error envelope.
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: key
+      description: Mockaroo API key passed as a query parameter.
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Mockaroo API key passed as a request header.
+externalDocs:
+  description: Mockaroo API documentation
+  url: https://www.mockaroo.com/docs

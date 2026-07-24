@@ -1,0 +1,99 @@
+openapi: 3.1.0
+info:
+  title: Mockaroo Datasets Types API
+  version: '1.0'
+  summary: Realistic Mock Data Generation
+  description: Mockaroo provides a REST API for generating realistic mock data on demand using over 150 built-in field types. The API supports schema-based and field-spec-based generation, multiple output formats (JSON, CSV, TXT, custom-delimited, SQL, XML), background jobs for large requests, and management of named datasets used as lookup sources during generation.
+  contact:
+    name: Mockaroo Support
+    url: https://www.mockaroo.com/support
+  license:
+    name: Mockaroo Terms of Service
+    url: https://www.mockaroo.com/terms
+servers:
+- url: https://api.mockaroo.com
+  description: Mockaroo production API
+security:
+- apiKeyQuery: []
+- apiKeyHeader: []
+tags:
+- name: Types
+  description: Discover available built-in field types.
+paths:
+  /api/types:
+    get:
+      tags:
+      - Types
+      operationId: listTypes
+      summary: List Field Types
+      description: Return the catalog of built-in field types Mockaroo can generate, including each type's name, category, and supported parameters.
+      responses:
+        '200':
+          description: List of available field types and their parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  schemas:
+    FieldType:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        parameters:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+      description: Metadata describing a single built-in Mockaroo field type.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: string
+      description: Standard error envelope.
+    TypeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/FieldType'
+      description: Catalog of built-in field types.
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Daily request or record quota exceeded for the API key's plan.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: key
+      description: Mockaroo API key passed as a query parameter.
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Mockaroo API key passed as a request header.
+externalDocs:
+  description: Mockaroo API documentation
+  url: https://www.mockaroo.com/docs
