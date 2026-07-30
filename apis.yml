@@ -10,7 +10,20 @@ description: >-
 url: https://www.mockaroo.com/docs
 humanURL: https://www.mockaroo.com
 baseURL: https://api.mockaroo.com
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mockaroo.png
 specificationVersion: '0.19'
 type: Index
 access: 3rd-Party
@@ -33,77 +46,265 @@ tags:
   - Datasets
   - Public APIs
 apis:
-  - aid: mockaroo:mockaroo
-    name: Mockaroo API
-    description: >-
-      REST API for generating realistic mock data records in JSON, CSV, TXT, custom-delimited, SQL, and XML formats.
-      Supports saved schemas, inline field specifications, 150+ built-in field types, named datasets as lookup sources,
-      and asynchronous background generation jobs for large requests.
-    humanURL: https://www.mockaroo.com/docs
-    baseURL: https://api.mockaroo.com
-    tags:
-      - Test Data
-      - Mock Data
-      - Data Generation
-      - REST API
-    properties:
-      - type: Documentation
-        url: https://www.mockaroo.com/docs
-      - type: APIReference
-        url: https://www.mockaroo.com/docs
-      - type: OpenAPI
-        url: openapi/mockaroo-openapi.yml
-      - type: Authentication
-        url: https://www.mockaroo.com/docs
-      - type: RateLimits
-        url: rate-limits/mockaroo-rate-limits.yml
-      - type: JSONSchema
-        url: json-schema/mockaroo-field-spec-schema.json
-      - type: JSONSchema
-        url: json-schema/mockaroo-field-type-schema.json
-      - type: JSONSchema
-        url: json-schema/mockaroo-download-schema.json
-      - type: JSONSchema
-        url: json-schema/mockaroo-dataset-schema.json
-      - type: JSONStructure
-        url: json-structure/mockaroo-field-spec-structure.json
-      - type: JSONStructure
-        url: json-structure/mockaroo-field-type-structure.json
-      - type: JSONStructure
-        url: json-structure/mockaroo-download-structure.json
-      - type: JSONStructure
-        url: json-structure/mockaroo-dataset-structure.json
-      - type: Examples
-        url: examples/mockaroo-list-types-example.json
-      - type: Examples
-        url: examples/mockaroo-generate-json-example.json
-      - type: Examples
-        url: examples/mockaroo-generate-csv-example.json
-      - type: Examples
-        url: examples/mockaroo-generate-txt-example.json
-      - type: Examples
-        url: examples/mockaroo-generate-custom-example.json
-      - type: Examples
-        url: examples/mockaroo-generate-sql-example.json
-      - type: Examples
-        url: examples/mockaroo-generate-xml-example.json
-      - type: Examples
-        url: examples/mockaroo-upload-dataset-example.json
-      - type: Examples
-        url: examples/mockaroo-delete-dataset-example.json
-      - type: Examples
-        url: examples/mockaroo-get-download-example.json
-      - type: Examples
-        url: examples/mockaroo-cancel-download-example.json
-      - type: Examples
-        url: examples/mockaroo-field-spec-example.json
-      - type: Examples
-        url: examples/mockaroo-field-type-example.json
-      - type: Examples
-        url: examples/mockaroo-download-example.json
-      - type: Examples
-        url: examples/mockaroo-dataset-example.json
+- aid: mockaroo:mockaroo-datasets-api
+  name: Mockaroo Datasets API
+  description: Manage named CSV datasets used as lookup sources.
+  humanURL: https://www.mockaroo.com/docs
+  baseURL: https://api.mockaroo.com
+  tags:
+  - Datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/mockaroo-datasets-api-openapi.yml
+  - type: Documentation
+    url: https://www.mockaroo.com/docs
+  - type: APIReference
+    url: https://www.mockaroo.com/docs
+  - type: Authentication
+    url: https://www.mockaroo.com/docs
+  - type: RateLimits
+    url: rate-limits/mockaroo-rate-limits.yml
+  - type: JSONSchema
+    url: json-schema/mockaroo-field-spec-schema.json
+  - type: JSONSchema
+    url: json-schema/mockaroo-field-type-schema.json
+  - type: JSONSchema
+    url: json-schema/mockaroo-download-schema.json
+  - type: JSONSchema
+    url: json-schema/mockaroo-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-field-spec-structure.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-field-type-structure.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-download-structure.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-dataset-structure.json
+  - type: Examples
+    url: examples/mockaroo-list-types-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-json-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-csv-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-txt-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-custom-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-sql-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-xml-example.json
+  - type: Examples
+    url: examples/mockaroo-upload-dataset-example.json
+  - type: Examples
+    url: examples/mockaroo-delete-dataset-example.json
+  - type: Examples
+    url: examples/mockaroo-get-download-example.json
+  - type: Examples
+    url: examples/mockaroo-cancel-download-example.json
+  - type: Examples
+    url: examples/mockaroo-field-spec-example.json
+  - type: Examples
+    url: examples/mockaroo-field-type-example.json
+  - type: Examples
+    url: examples/mockaroo-download-example.json
+  - type: Examples
+    url: examples/mockaroo-dataset-example.json
+- aid: mockaroo:mockaroo-downloads-api
+  name: Mockaroo Downloads API
+  description: Manage long-running background generation jobs.
+  humanURL: https://www.mockaroo.com/docs
+  baseURL: https://api.mockaroo.com
+  tags:
+  - Downloads
+  properties:
+  - type: OpenAPI
+    url: openapi/mockaroo-downloads-api-openapi.yml
+  - type: Documentation
+    url: https://www.mockaroo.com/docs
+  - type: APIReference
+    url: https://www.mockaroo.com/docs
+  - type: Authentication
+    url: https://www.mockaroo.com/docs
+  - type: RateLimits
+    url: rate-limits/mockaroo-rate-limits.yml
+  - type: JSONSchema
+    url: json-schema/mockaroo-field-spec-schema.json
+  - type: JSONSchema
+    url: json-schema/mockaroo-field-type-schema.json
+  - type: JSONSchema
+    url: json-schema/mockaroo-download-schema.json
+  - type: JSONSchema
+    url: json-schema/mockaroo-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-field-spec-structure.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-field-type-structure.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-download-structure.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-dataset-structure.json
+  - type: Examples
+    url: examples/mockaroo-list-types-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-json-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-csv-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-txt-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-custom-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-sql-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-xml-example.json
+  - type: Examples
+    url: examples/mockaroo-upload-dataset-example.json
+  - type: Examples
+    url: examples/mockaroo-delete-dataset-example.json
+  - type: Examples
+    url: examples/mockaroo-get-download-example.json
+  - type: Examples
+    url: examples/mockaroo-cancel-download-example.json
+  - type: Examples
+    url: examples/mockaroo-field-spec-example.json
+  - type: Examples
+    url: examples/mockaroo-field-type-example.json
+  - type: Examples
+    url: examples/mockaroo-download-example.json
+  - type: Examples
+    url: examples/mockaroo-dataset-example.json
+- aid: mockaroo:mockaroo-generate-api
+  name: Mockaroo Generate API
+  description: Generate mock data records on demand in multiple formats.
+  humanURL: https://www.mockaroo.com/docs
+  baseURL: https://api.mockaroo.com
+  tags:
+  - Generate
+  properties:
+  - type: OpenAPI
+    url: openapi/mockaroo-generate-api-openapi.yml
+  - type: Documentation
+    url: https://www.mockaroo.com/docs
+  - type: APIReference
+    url: https://www.mockaroo.com/docs
+  - type: Authentication
+    url: https://www.mockaroo.com/docs
+  - type: RateLimits
+    url: rate-limits/mockaroo-rate-limits.yml
+  - type: JSONSchema
+    url: json-schema/mockaroo-field-spec-schema.json
+  - type: JSONSchema
+    url: json-schema/mockaroo-field-type-schema.json
+  - type: JSONSchema
+    url: json-schema/mockaroo-download-schema.json
+  - type: JSONSchema
+    url: json-schema/mockaroo-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-field-spec-structure.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-field-type-structure.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-download-structure.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-dataset-structure.json
+  - type: Examples
+    url: examples/mockaroo-list-types-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-json-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-csv-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-txt-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-custom-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-sql-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-xml-example.json
+  - type: Examples
+    url: examples/mockaroo-upload-dataset-example.json
+  - type: Examples
+    url: examples/mockaroo-delete-dataset-example.json
+  - type: Examples
+    url: examples/mockaroo-get-download-example.json
+  - type: Examples
+    url: examples/mockaroo-cancel-download-example.json
+  - type: Examples
+    url: examples/mockaroo-field-spec-example.json
+  - type: Examples
+    url: examples/mockaroo-field-type-example.json
+  - type: Examples
+    url: examples/mockaroo-download-example.json
+  - type: Examples
+    url: examples/mockaroo-dataset-example.json
+- aid: mockaroo:mockaroo-types-api
+  name: Mockaroo Types API
+  description: Discover available built-in field types.
+  humanURL: https://www.mockaroo.com/docs
+  baseURL: https://api.mockaroo.com
+  tags:
+  - Types
+  properties:
+  - type: OpenAPI
+    url: openapi/mockaroo-types-api-openapi.yml
+  - type: Documentation
+    url: https://www.mockaroo.com/docs
+  - type: APIReference
+    url: https://www.mockaroo.com/docs
+  - type: Authentication
+    url: https://www.mockaroo.com/docs
+  - type: RateLimits
+    url: rate-limits/mockaroo-rate-limits.yml
+  - type: JSONSchema
+    url: json-schema/mockaroo-field-spec-schema.json
+  - type: JSONSchema
+    url: json-schema/mockaroo-field-type-schema.json
+  - type: JSONSchema
+    url: json-schema/mockaroo-download-schema.json
+  - type: JSONSchema
+    url: json-schema/mockaroo-dataset-schema.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-field-spec-structure.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-field-type-structure.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-download-structure.json
+  - type: JSONStructure
+    url: json-structure/mockaroo-dataset-structure.json
+  - type: Examples
+    url: examples/mockaroo-list-types-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-json-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-csv-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-txt-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-custom-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-sql-example.json
+  - type: Examples
+    url: examples/mockaroo-generate-xml-example.json
+  - type: Examples
+    url: examples/mockaroo-upload-dataset-example.json
+  - type: Examples
+    url: examples/mockaroo-delete-dataset-example.json
+  - type: Examples
+    url: examples/mockaroo-get-download-example.json
+  - type: Examples
+    url: examples/mockaroo-cancel-download-example.json
+  - type: Examples
+    url: examples/mockaroo-field-spec-example.json
+  - type: Examples
+    url: examples/mockaroo-field-type-example.json
+  - type: Examples
+    url: examples/mockaroo-download-example.json
+  - type: Examples
+    url: examples/mockaroo-dataset-example.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/mockaroo/overview
   - type: AgenticAccess
     url: agentic-access/mockaroo-agentic-access.yml
   - type: DomainSecurity
