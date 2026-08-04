@@ -1,0 +1,431 @@
+{
+  "info": {
+    "_postman_id": "613d589e-16b6-451a-a2a0-cecad81bfb38",
+    "name": "Mockaroo Datasets API",
+    "description": "Mockaroo provides a REST API for generating realistic mock data on demand using over 150 built-in field types. The API supports schema-based and field-spec-based generation, multiple output formats (JSON, CSV, TXT, custom-delimited, SQL, XML), background jobs for large requests, and management of named datasets used as lookup sources during generation.\n\nContact Support:\n Name: Mockaroo Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:14:49.000Z",
+    "updatedAt": "2026-07-28T02:14:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-613d589e-16b6-451a-a2a0-cecad81bfb38"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "datasets",
+          "item": [
+            {
+              "name": "{name}",
+              "item": [
+                {
+                  "name": "Upload Or Replace A Dataset",
+                  "id": "a9f7b906-2371-46a9-9db3-e83f6611299c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/plain"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/datasets/:name?filename=<string>&project=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "datasets",
+                        ":name"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional original filename for the uploaded dataset.",
+                          "key": "filename",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional project name in which to store the dataset.",
+                          "key": "project",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "13821ac9-b5de-4d1e-ba24-959b0edde44d",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) Name of the dataset."
+                        }
+                      ]
+                    },
+                    "description": "Upload a CSV or plain-text dataset under the given name. The dataset can then be used as a lookup source in schemas via the Dataset Column type."
+                  },
+                  "response": [
+                    {
+                      "id": "eb72efdd-c240-43f4-8165-770e651dc291",
+                      "name": "Dataset uploaded successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/datasets/:name?filename=<string>&project=<string>&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "datasets",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional original filename for the uploaded dataset.",
+                              "key": "filename",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional project name in which to store the dataset.",
+                              "key": "project",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:14:50.000Z",
+                      "updatedAt": "2026-07-28T02:14:50.000Z",
+                      "uid": "35240-eb72efdd-c240-43f4-8165-770e651dc291"
+                    },
+                    {
+                      "id": "cf1916bb-9764-4e97-ac02-bf54964af874",
+                      "name": "Missing or invalid API key.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/datasets/:name?filename=<string>&project=<string>&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "datasets",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional original filename for the uploaded dataset.",
+                              "key": "filename",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional project name in which to store the dataset.",
+                              "key": "project",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:14:50.000Z",
+                      "updatedAt": "2026-07-28T02:14:50.000Z",
+                      "uid": "35240-cf1916bb-9764-4e97-ac02-bf54964af874"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:14:50.000Z",
+                  "updatedAt": "2026-07-28T02:14:50.000Z",
+                  "uid": "35240-a9f7b906-2371-46a9-9db3-e83f6611299c"
+                },
+                {
+                  "name": "Delete A Dataset",
+                  "id": "c063040a-2bc8-482a-a5ac-41f35defef6c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/datasets/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "datasets",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "818e96e2-7fd1-4f1c-a78b-f45468584b7b",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) Name of the dataset."
+                        }
+                      ]
+                    },
+                    "description": "Remove the dataset with the given name."
+                  },
+                  "response": [
+                    {
+                      "id": "41228458-749b-4399-b967-6473b38fbb55",
+                      "name": "Dataset deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/datasets/:name?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "datasets",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:14:50.000Z",
+                      "updatedAt": "2026-07-28T02:14:50.000Z",
+                      "uid": "35240-41228458-749b-4399-b967-6473b38fbb55"
+                    },
+                    {
+                      "id": "54d74ab2-5e5d-42ee-8861-01462704091a",
+                      "name": "Missing or invalid API key.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/datasets/:name?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "datasets",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:14:50.000Z",
+                      "updatedAt": "2026-07-28T02:14:50.000Z",
+                      "uid": "35240-54d74ab2-5e5d-42ee-8861-01462704091a"
+                    },
+                    {
+                      "id": "c7ef7bea-d73e-4fc3-99dc-50f94b1a7b36",
+                      "name": "Dataset not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/datasets/:name?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "datasets",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:14:50.000Z",
+                      "updatedAt": "2026-07-28T02:14:50.000Z",
+                      "uid": "35240-c7ef7bea-d73e-4fc3-99dc-50f94b1a7b36"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:14:50.000Z",
+                  "updatedAt": "2026-07-28T02:14:50.000Z",
+                  "uid": "35240-c063040a-2bc8-482a-a5ac-41f35defef6c"
+                }
+              ],
+              "id": "d1eacc16-8db1-4e98-8d9f-8b2807dc8255",
+              "createdAt": "2026-07-28T02:14:50.000Z",
+              "updatedAt": "2026-07-28T02:14:50.000Z",
+              "uid": "35240-d1eacc16-8db1-4e98-8d9f-8b2807dc8255"
+            }
+          ],
+          "id": "f6e54451-73eb-4e87-8881-e3c6b5f0f794",
+          "createdAt": "2026-07-28T02:14:50.000Z",
+          "updatedAt": "2026-07-28T02:14:50.000Z",
+          "uid": "35240-f6e54451-73eb-4e87-8881-e3c6b5f0f794"
+        }
+      ],
+      "id": "f53e4083-a95e-494b-90af-fb20d2b89779",
+      "createdAt": "2026-07-28T02:14:50.000Z",
+      "updatedAt": "2026-07-28T02:14:50.000Z",
+      "uid": "35240-f53e4083-a95e-494b-90af-fb20d2b89779"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mockaroo.com"
+    }
+  ]
+}

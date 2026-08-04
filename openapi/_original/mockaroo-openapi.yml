@@ -1,0 +1,502 @@
+openapi: 3.1.0
+info:
+  title: Mockaroo API
+  version: '1.0'
+  summary: Realistic Mock Data Generation
+  description: >-
+    Mockaroo provides a REST API for generating realistic mock data on demand
+    using over 150 built-in field types. The API supports schema-based and
+    field-spec-based generation, multiple output formats (JSON, CSV, TXT,
+    custom-delimited, SQL, XML), background jobs for large requests, and
+    management of named datasets used as lookup sources during generation.
+  contact:
+    name: Mockaroo Support
+    url: https://www.mockaroo.com/support
+  license:
+    name: Mockaroo Terms of Service
+    url: https://www.mockaroo.com/terms
+servers:
+  - url: https://api.mockaroo.com
+    description: Mockaroo production API
+externalDocs:
+  description: Mockaroo API documentation
+  url: https://www.mockaroo.com/docs
+security:
+  - apiKeyQuery: []
+  - apiKeyHeader: []
+tags:
+  - name: Generate
+    description: Generate mock data records on demand in multiple formats.
+  - name: Types
+    description: Discover available built-in field types.
+  - name: Schemas
+    description: Manage and generate from saved schemas.
+  - name: Datasets
+    description: Manage named CSV datasets used as lookup sources.
+  - name: Downloads
+    description: Manage long-running background generation jobs.
+paths:
+  /api/types:
+    get:
+      tags:
+        - Types
+      operationId: listTypes
+      summary: List Field Types
+      description: >-
+        Return the catalog of built-in field types Mockaroo can generate,
+        including each type's name, category, and supported parameters.
+      responses:
+        '200':
+          description: List of available field types and their parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/generate.json:
+    post:
+      tags:
+        - Generate
+      operationId: generateJson
+      summary: Generate Records As JSON
+      description: >-
+        Generate records using either a saved schema (via the schema parameter)
+        or an inline list of field specifications supplied in the request body.
+      parameters:
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Schema'
+        - $ref: '#/components/parameters/Array'
+        - $ref: '#/components/parameters/IncludeNulls'
+        - $ref: '#/components/parameters/Background'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldSpecList'
+      responses:
+        '200':
+          description: Generated record(s) as JSON.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    additionalProperties: true
+                  - type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+        '202':
+          $ref: '#/components/responses/DownloadAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/generate.csv:
+    post:
+      tags:
+        - Generate
+      operationId: generateCsv
+      summary: Generate Records As CSV
+      description: Generate records as comma-separated values.
+      parameters:
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Schema'
+        - $ref: '#/components/parameters/IncludeHeader'
+        - $ref: '#/components/parameters/LineEnding'
+        - $ref: '#/components/parameters/Background'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldSpecList'
+      responses:
+        '200':
+          description: Generated CSV records.
+          content:
+            text/csv:
+              schema:
+                type: string
+        '202':
+          $ref: '#/components/responses/DownloadAccepted'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/generate.txt:
+    post:
+      tags:
+        - Generate
+      operationId: generateTxt
+      summary: Generate Records As Tab-Separated Text
+      description: Generate records as tab-separated text.
+      parameters:
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Schema'
+        - $ref: '#/components/parameters/IncludeHeader'
+        - $ref: '#/components/parameters/LineEnding'
+        - $ref: '#/components/parameters/Background'
+      responses:
+        '200':
+          description: Generated tab-separated records.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/generate.custom:
+    post:
+      tags:
+        - Generate
+      operationId: generateCustom
+      summary: Generate Records With A Custom Delimiter
+      description: Generate records using a configurable delimiter and quote character.
+      parameters:
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Schema'
+        - $ref: '#/components/parameters/Delimiter'
+        - $ref: '#/components/parameters/QuoteChar'
+        - $ref: '#/components/parameters/IncludeHeader'
+        - $ref: '#/components/parameters/LineEnding'
+      responses:
+        '200':
+          description: Custom-delimited records.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/generate.sql:
+    post:
+      tags:
+        - Generate
+      operationId: generateSql
+      summary: Generate Records As SQL Inserts
+      description: Generate records as SQL INSERT statements.
+      parameters:
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Schema'
+        - name: table
+          in: query
+          schema:
+            type: string
+          description: Target table name for INSERT statements.
+        - $ref: '#/components/parameters/Background'
+      responses:
+        '200':
+          description: Generated SQL INSERT statements.
+          content:
+            application/sql:
+              schema:
+                type: string
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/generate.xml:
+    post:
+      tags:
+        - Generate
+      operationId: generateXml
+      summary: Generate Records As XML
+      description: Generate records as an XML document.
+      parameters:
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Schema'
+        - $ref: '#/components/parameters/Background'
+      responses:
+        '200':
+          description: Generated XML document.
+          content:
+            application/xml:
+              schema:
+                type: string
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/datasets/{name}:
+    parameters:
+      - $ref: '#/components/parameters/DatasetName'
+    post:
+      tags:
+        - Datasets
+      operationId: uploadDataset
+      summary: Upload Or Replace A Dataset
+      description: >-
+        Upload a CSV or plain-text dataset under the given name. The dataset
+        can then be used as a lookup source in schemas via the Dataset Column
+        type.
+      parameters:
+        - name: filename
+          in: query
+          schema:
+            type: string
+          description: Optional original filename for the uploaded dataset.
+        - name: project
+          in: query
+          schema:
+            type: string
+          description: Optional project name in which to store the dataset.
+      requestBody:
+        required: true
+        content:
+          text/csv:
+            schema:
+              type: string
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Dataset uploaded successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      tags:
+        - Datasets
+      operationId: deleteDataset
+      summary: Delete A Dataset
+      description: Remove the dataset with the given name.
+      responses:
+        '204':
+          description: Dataset deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Dataset not found.
+  /api/downloads/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Identifier of the background download job.
+    get:
+      tags:
+        - Downloads
+      operationId: getDownload
+      summary: Get Background Download Status
+      description: >-
+        Retrieve the status and progress of a background generation job
+        initiated with background=true.
+      responses:
+        '200':
+          description: Current status of the background download job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Download'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Download job not found.
+    delete:
+      tags:
+        - Downloads
+      operationId: cancelDownload
+      summary: Cancel Background Download
+      description: Cancel or remove a background download job.
+      responses:
+        '204':
+          description: Download job canceled.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: key
+      description: Mockaroo API key passed as a query parameter.
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Mockaroo API key passed as a request header.
+  parameters:
+    Count:
+      name: count
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Number of records to generate.
+    Schema:
+      name: schema
+      in: query
+      schema:
+        type: string
+      description: Name of a saved Mockaroo schema to generate from.
+    Array:
+      name: array
+      in: query
+      schema:
+        type: boolean
+        default: false
+      description: Force a JSON array response even when count=1.
+    IncludeNulls:
+      name: include_nulls
+      in: query
+      schema:
+        type: boolean
+        default: false
+      description: Emit null-valued JSON fields instead of omitting them.
+    IncludeHeader:
+      name: include_header
+      in: query
+      schema:
+        type: boolean
+        default: true
+      description: Include a header row in CSV/TXT/custom output.
+    LineEnding:
+      name: line_ending
+      in: query
+      schema:
+        type: string
+        enum:
+          - unix
+          - windows
+        default: unix
+      description: Line ending style for text-based formats.
+    Delimiter:
+      name: delimiter
+      in: query
+      schema:
+        type: string
+      description: Field delimiter for /api/generate.custom.
+    QuoteChar:
+      name: quote_char
+      in: query
+      schema:
+        type: string
+      description: Quote character for /api/generate.custom.
+    Background:
+      name: background
+      in: query
+      schema:
+        type: boolean
+        default: false
+      description: >-
+        Run the generation as a background job. The response will contain a
+        download id which can be polled via /api/downloads/{id}. Requires a
+        paid plan.
+    DatasetName:
+      name: name
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Name of the dataset.
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request is malformed or a field specification is invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Daily request or record quota exceeded for the API key's plan.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    DownloadAccepted:
+      description: Background job queued; poll the returned download id for status.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Download'
+  schemas:
+    FieldSpec:
+      type: object
+      required:
+        - name
+        - type
+      properties:
+        name:
+          type: string
+          description: Column or property name for the generated field.
+        type:
+          type: string
+          description: One of Mockaroo's built-in field types (e.g. First Name, Email Address, IP Address v4).
+        percentBlank:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: Percentage of generated values that should be blank.
+        formula:
+          type: string
+          description: Mockaroo formula expression to transform the generated value.
+      additionalProperties: true
+      description: A single field specification used to describe an inline schema.
+    FieldSpecList:
+      type: array
+      items:
+        $ref: '#/components/schemas/FieldSpec'
+      description: An inline list of field specifications used in lieu of a saved schema.
+    FieldType:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        parameters:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+      description: Metadata describing a single built-in Mockaroo field type.
+    TypeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/FieldType'
+      description: Catalog of built-in field types.
+    Download:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+            - queued
+            - in_progress
+            - success
+            - failed
+        percentComplete:
+          type: number
+        recordsGenerated:
+          type: integer
+        error:
+          type: string
+        url:
+          type: string
+          format: uri
+      description: Status of a background generation job.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: string
+      description: Standard error envelope.

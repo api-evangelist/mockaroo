@@ -1,0 +1,1771 @@
+{
+  "info": {
+    "_postman_id": "ac3c9fe2-49f7-4cc5-9cbf-767e1d6eb838",
+    "name": "Mockaroo Datasets Generate API",
+    "description": "Mockaroo provides a REST API for generating realistic mock data on demand using over 150 built-in field types. The API supports schema-based and field-spec-based generation, multiple output formats (JSON, CSV, TXT, custom-delimited, SQL, XML), background jobs for large requests, and management of named datasets used as lookup sources during generation.\n\nContact Support:\n Name: Mockaroo Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:14:53.000Z",
+    "updatedAt": "2026-07-28T02:14:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ac3c9fe2-49f7-4cc5-9cbf-767e1d6eb838"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "generate.json",
+          "item": [
+            {
+              "name": "Generate Records As JSON",
+              "id": "a9c8fa78-ae7f-4deb-87e3-34d1b9b5cbd9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/generate.json?count=1&schema=<string>&array=false&include_nulls=false&background=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "generate.json"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to generate.",
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Name of a saved Mockaroo schema to generate from.",
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Force a JSON array response even when count=1.",
+                      "key": "array",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Emit null-valued JSON fields instead of omitting them.",
+                      "key": "include_nulls",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                      "key": "background",
+                      "value": "false"
+                    }
+                  ]
+                },
+                "description": "Generate records using either a saved schema (via the schema parameter) or an inline list of field specifications supplied in the request body."
+              },
+              "response": [
+                {
+                  "id": "9b284e8a-3f8b-4e20-9605-9089538292f2",
+                  "name": "Generated record(s) as JSON.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.json?count=1&schema=<string>&array=false&include_nulls=false&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.json"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Force a JSON array response even when count=1.",
+                          "key": "array",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Emit null-valued JSON fields instead of omitting them.",
+                          "key": "include_nulls",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"esse_99\": 10388486.708419502,\n  \"fugiatb\": -11800279,\n  \"laborum_14c\": 72387889.14887846,\n  \"officia_64c\": \"Lorem aut\"\n}",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-9b284e8a-3f8b-4e20-9605-9089538292f2"
+                },
+                {
+                  "id": "39b5dc85-4489-4638-8ac9-45cc4a44445d",
+                  "name": "Background job queued; poll the returned download id for status.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.json?count=1&schema=<string>&array=false&include_nulls=false&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.json"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Force a JSON array response even when count=1.",
+                          "key": "array",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Emit null-valued JSON fields instead of omitting them.",
+                          "key": "include_nulls",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Accepted",
+                  "code": 202,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"queued\",\n  \"percentComplete\": \"<number>\",\n  \"recordsGenerated\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"url\": \"<uri>\"\n}",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-39b5dc85-4489-4638-8ac9-45cc4a44445d"
+                },
+                {
+                  "id": "a3951b5d-f40d-481e-ad1f-b91e1a21a118",
+                  "name": "The request is malformed or a field specification is invalid.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.json?count=1&schema=<string>&array=false&include_nulls=false&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.json"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Force a JSON array response even when count=1.",
+                          "key": "array",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Emit null-valued JSON fields instead of omitting them.",
+                          "key": "include_nulls",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-a3951b5d-f40d-481e-ad1f-b91e1a21a118"
+                },
+                {
+                  "id": "dd8f396d-9525-4d7e-98da-16b51ec60493",
+                  "name": "Missing or invalid API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.json?count=1&schema=<string>&array=false&include_nulls=false&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.json"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Force a JSON array response even when count=1.",
+                          "key": "array",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Emit null-valued JSON fields instead of omitting them.",
+                          "key": "include_nulls",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-dd8f396d-9525-4d7e-98da-16b51ec60493"
+                },
+                {
+                  "id": "adf1a689-4966-43ff-9a65-2b01891225f5",
+                  "name": "Daily request or record quota exceeded for the API key's plan.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.json?count=1&schema=<string>&array=false&include_nulls=false&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.json"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Force a JSON array response even when count=1.",
+                          "key": "array",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Emit null-valued JSON fields instead of omitting them.",
+                          "key": "include_nulls",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-adf1a689-4966-43ff-9a65-2b01891225f5"
+                }
+              ],
+              "createdAt": "2026-07-28T02:14:54.000Z",
+              "updatedAt": "2026-07-28T02:14:54.000Z",
+              "uid": "35240-a9c8fa78-ae7f-4deb-87e3-34d1b9b5cbd9"
+            }
+          ],
+          "id": "ae51189c-1fc6-4194-9679-6b058b840646",
+          "createdAt": "2026-07-28T02:14:54.000Z",
+          "updatedAt": "2026-07-28T02:14:54.000Z",
+          "uid": "35240-ae51189c-1fc6-4194-9679-6b058b840646"
+        },
+        {
+          "name": "generate.csv",
+          "item": [
+            {
+              "name": "Generate Records As CSV",
+              "id": "2b019081-9985-41eb-9d26-065aaccb04be",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/generate.csv?count=1&schema=<string>&include_header=true&line_ending=unix&background=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "generate.csv"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to generate.",
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Name of a saved Mockaroo schema to generate from.",
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include a header row in CSV/TXT/custom output.",
+                      "key": "include_header",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Line ending style for text-based formats.",
+                      "key": "line_ending",
+                      "value": "unix"
+                    },
+                    {
+                      "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                      "key": "background",
+                      "value": "false"
+                    }
+                  ]
+                },
+                "description": "Generate records as comma-separated values."
+              },
+              "response": [
+                {
+                  "id": "fc1e0e41-7c90-4346-881c-5b1e5f096789",
+                  "name": "Generated CSV records.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/csv"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.csv?count=1&schema=<string>&include_header=true&line_ending=unix&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.csv"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include a header row in CSV/TXT/custom output.",
+                          "key": "include_header",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Line ending style for text-based formats.",
+                          "key": "line_ending",
+                          "value": "unix"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/csv"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-fc1e0e41-7c90-4346-881c-5b1e5f096789"
+                },
+                {
+                  "id": "a4b967ff-5eda-464c-b253-a59b40fd52c8",
+                  "name": "Background job queued; poll the returned download id for status.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.csv?count=1&schema=<string>&include_header=true&line_ending=unix&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.csv"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include a header row in CSV/TXT/custom output.",
+                          "key": "include_header",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Line ending style for text-based formats.",
+                          "key": "line_ending",
+                          "value": "unix"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Accepted",
+                  "code": 202,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"queued\",\n  \"percentComplete\": \"<number>\",\n  \"recordsGenerated\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"url\": \"<uri>\"\n}",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-a4b967ff-5eda-464c-b253-a59b40fd52c8"
+                },
+                {
+                  "id": "9fb0b841-8d7c-4ea2-90c3-bed836b69533",
+                  "name": "Missing or invalid API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.csv?count=1&schema=<string>&include_header=true&line_ending=unix&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.csv"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include a header row in CSV/TXT/custom output.",
+                          "key": "include_header",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Line ending style for text-based formats.",
+                          "key": "line_ending",
+                          "value": "unix"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-9fb0b841-8d7c-4ea2-90c3-bed836b69533"
+                },
+                {
+                  "id": "f3c9f936-fee6-4552-92fc-21870094bc29",
+                  "name": "Daily request or record quota exceeded for the API key's plan.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.csv?count=1&schema=<string>&include_header=true&line_ending=unix&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.csv"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include a header row in CSV/TXT/custom output.",
+                          "key": "include_header",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Line ending style for text-based formats.",
+                          "key": "line_ending",
+                          "value": "unix"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-f3c9f936-fee6-4552-92fc-21870094bc29"
+                }
+              ],
+              "createdAt": "2026-07-28T02:14:54.000Z",
+              "updatedAt": "2026-07-28T02:14:54.000Z",
+              "uid": "35240-2b019081-9985-41eb-9d26-065aaccb04be"
+            }
+          ],
+          "id": "00f9c35c-e33d-4f57-b6bf-3a3ff2d3d5cc",
+          "createdAt": "2026-07-28T02:14:54.000Z",
+          "updatedAt": "2026-07-28T02:14:54.000Z",
+          "uid": "35240-00f9c35c-e33d-4f57-b6bf-3a3ff2d3d5cc"
+        },
+        {
+          "name": "generate.txt",
+          "item": [
+            {
+              "name": "Generate Records As Tab-Separated Text",
+              "id": "d16f5881-4582-4f3c-80d7-aa1e33ba0c37",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/generate.txt?count=1&schema=<string>&include_header=true&line_ending=unix&background=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "generate.txt"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to generate.",
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Name of a saved Mockaroo schema to generate from.",
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include a header row in CSV/TXT/custom output.",
+                      "key": "include_header",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Line ending style for text-based formats.",
+                      "key": "line_ending",
+                      "value": "unix"
+                    },
+                    {
+                      "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                      "key": "background",
+                      "value": "false"
+                    }
+                  ]
+                },
+                "description": "Generate records as tab-separated text."
+              },
+              "response": [
+                {
+                  "id": "c0295ef4-04e6-457a-92dd-715fe9689323",
+                  "name": "Generated tab-separated records.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.txt?count=1&schema=<string>&include_header=true&line_ending=unix&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.txt"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include a header row in CSV/TXT/custom output.",
+                          "key": "include_header",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Line ending style for text-based formats.",
+                          "key": "line_ending",
+                          "value": "unix"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-c0295ef4-04e6-457a-92dd-715fe9689323"
+                },
+                {
+                  "id": "d526fe52-a443-46a4-bbe6-f2bc3951fd15",
+                  "name": "Missing or invalid API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.txt?count=1&schema=<string>&include_header=true&line_ending=unix&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.txt"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include a header row in CSV/TXT/custom output.",
+                          "key": "include_header",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Line ending style for text-based formats.",
+                          "key": "line_ending",
+                          "value": "unix"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-d526fe52-a443-46a4-bbe6-f2bc3951fd15"
+                }
+              ],
+              "createdAt": "2026-07-28T02:14:54.000Z",
+              "updatedAt": "2026-07-28T02:14:54.000Z",
+              "uid": "35240-d16f5881-4582-4f3c-80d7-aa1e33ba0c37"
+            }
+          ],
+          "id": "29d23240-1824-4ee2-8ce8-5ff37506b240",
+          "createdAt": "2026-07-28T02:14:54.000Z",
+          "updatedAt": "2026-07-28T02:14:54.000Z",
+          "uid": "35240-29d23240-1824-4ee2-8ce8-5ff37506b240"
+        },
+        {
+          "name": "generate.custom",
+          "item": [
+            {
+              "name": "Generate Records With A Custom Delimiter",
+              "id": "ec8fce37-22e3-43f1-bdd6-6c96ec70eb5c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/generate.custom?count=1&schema=<string>&delimiter=<string>&quote_char=<string>&include_header=true&line_ending=unix",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "generate.custom"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to generate.",
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Name of a saved Mockaroo schema to generate from.",
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field delimiter for /api/generate.custom.",
+                      "key": "delimiter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Quote character for /api/generate.custom.",
+                      "key": "quote_char",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include a header row in CSV/TXT/custom output.",
+                      "key": "include_header",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Line ending style for text-based formats.",
+                      "key": "line_ending",
+                      "value": "unix"
+                    }
+                  ]
+                },
+                "description": "Generate records using a configurable delimiter and quote character."
+              },
+              "response": [
+                {
+                  "id": "57a39d1d-b607-4b8a-b07e-a068d65c3244",
+                  "name": "Custom-delimited records.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.custom?count=1&schema=<string>&delimiter=<string>&quote_char=<string>&include_header=true&line_ending=unix&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.custom"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Field delimiter for /api/generate.custom.",
+                          "key": "delimiter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Quote character for /api/generate.custom.",
+                          "key": "quote_char",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include a header row in CSV/TXT/custom output.",
+                          "key": "include_header",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Line ending style for text-based formats.",
+                          "key": "line_ending",
+                          "value": "unix"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-57a39d1d-b607-4b8a-b07e-a068d65c3244"
+                },
+                {
+                  "id": "a66a529c-506f-4a3d-a63d-f78edc555f9a",
+                  "name": "Missing or invalid API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.custom?count=1&schema=<string>&delimiter=<string>&quote_char=<string>&include_header=true&line_ending=unix&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.custom"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Field delimiter for /api/generate.custom.",
+                          "key": "delimiter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Quote character for /api/generate.custom.",
+                          "key": "quote_char",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include a header row in CSV/TXT/custom output.",
+                          "key": "include_header",
+                          "value": "true"
+                        },
+                        {
+                          "description": "Line ending style for text-based formats.",
+                          "key": "line_ending",
+                          "value": "unix"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-a66a529c-506f-4a3d-a63d-f78edc555f9a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:14:54.000Z",
+              "updatedAt": "2026-07-28T02:14:54.000Z",
+              "uid": "35240-ec8fce37-22e3-43f1-bdd6-6c96ec70eb5c"
+            }
+          ],
+          "id": "3137ec56-87d7-42e3-98fe-f3a9fd7edaea",
+          "createdAt": "2026-07-28T02:14:54.000Z",
+          "updatedAt": "2026-07-28T02:14:54.000Z",
+          "uid": "35240-3137ec56-87d7-42e3-98fe-f3a9fd7edaea"
+        },
+        {
+          "name": "generate.sql",
+          "item": [
+            {
+              "name": "Generate Records As SQL Inserts",
+              "id": "27e13a3e-1bcb-4086-bc9f-85343afd34aa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/sql"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/generate.sql?count=1&schema=<string>&table=<string>&background=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "generate.sql"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to generate.",
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Name of a saved Mockaroo schema to generate from.",
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Target table name for INSERT statements.",
+                      "key": "table",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                      "key": "background",
+                      "value": "false"
+                    }
+                  ]
+                },
+                "description": "Generate records as SQL INSERT statements."
+              },
+              "response": [
+                {
+                  "id": "80597c04-9688-499e-88c1-eb534f19920f",
+                  "name": "Generated SQL INSERT statements.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/sql"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.sql?count=1&schema=<string>&table=<string>&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.sql"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Target table name for INSERT statements.",
+                          "key": "table",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/sql"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-80597c04-9688-499e-88c1-eb534f19920f"
+                },
+                {
+                  "id": "ba39e233-eafc-481d-835a-28bf6799692c",
+                  "name": "Missing or invalid API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.sql?count=1&schema=<string>&table=<string>&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.sql"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Target table name for INSERT statements.",
+                          "key": "table",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-ba39e233-eafc-481d-835a-28bf6799692c"
+                }
+              ],
+              "createdAt": "2026-07-28T02:14:54.000Z",
+              "updatedAt": "2026-07-28T02:14:54.000Z",
+              "uid": "35240-27e13a3e-1bcb-4086-bc9f-85343afd34aa"
+            }
+          ],
+          "id": "f4fd93e3-eff6-4cd5-98be-1db89088515e",
+          "createdAt": "2026-07-28T02:14:54.000Z",
+          "updatedAt": "2026-07-28T02:14:54.000Z",
+          "uid": "35240-f4fd93e3-eff6-4cd5-98be-1db89088515e"
+        },
+        {
+          "name": "generate.xml",
+          "item": [
+            {
+              "name": "Generate Records As XML",
+              "id": "c90d5d33-2687-42ab-8dc9-0a72c8bf5d68",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/generate.xml?count=1&schema=<string>&background=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "generate.xml"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of records to generate.",
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Name of a saved Mockaroo schema to generate from.",
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                      "key": "background",
+                      "value": "false"
+                    }
+                  ]
+                },
+                "description": "Generate records as an XML document."
+              },
+              "response": [
+                {
+                  "id": "dc34360b-8bde-4787-871e-be042aba47e1",
+                  "name": "Generated XML document.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.xml?count=1&schema=<string>&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.xml"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-dc34360b-8bde-4787-871e-be042aba47e1"
+                },
+                {
+                  "id": "65486a3e-1073-4254-8b54-061f4e5d1c02",
+                  "name": "Missing or invalid API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/generate.xml?count=1&schema=<string>&background=false&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "generate.xml"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of records to generate.",
+                          "key": "count",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Name of a saved Mockaroo schema to generate from.",
+                          "key": "schema",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.",
+                          "key": "background",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:14:54.000Z",
+                  "updatedAt": "2026-07-28T02:14:54.000Z",
+                  "uid": "35240-65486a3e-1073-4254-8b54-061f4e5d1c02"
+                }
+              ],
+              "createdAt": "2026-07-28T02:14:54.000Z",
+              "updatedAt": "2026-07-28T02:14:54.000Z",
+              "uid": "35240-c90d5d33-2687-42ab-8dc9-0a72c8bf5d68"
+            }
+          ],
+          "id": "a4ece692-7bf7-4ee8-91d6-b4de741eb938",
+          "createdAt": "2026-07-28T02:14:54.000Z",
+          "updatedAt": "2026-07-28T02:14:54.000Z",
+          "uid": "35240-a4ece692-7bf7-4ee8-91d6-b4de741eb938"
+        }
+      ],
+      "id": "f438e19d-5442-4e58-9461-c3cce74a65a6",
+      "createdAt": "2026-07-28T02:14:54.000Z",
+      "updatedAt": "2026-07-28T02:14:54.000Z",
+      "uid": "35240-f438e19d-5442-4e58-9461-c3cce74a65a6"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mockaroo.com"
+    }
+  ]
+}

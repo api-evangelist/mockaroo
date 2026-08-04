@@ -1,0 +1,20 @@
+{
+  "provider": "mockaroo",
+  "sources": [
+    "mockaroo-datasets-api-openapi.yml",
+    "mockaroo-downloads-api-openapi.yml",
+    "mockaroo-generate-api-openapi.yml",
+    "mockaroo-types-api-openapi.yml"
+  ],
+  "outputs": [
+    "mockaroo-datasets-api-openapi.yml",
+    "mockaroo-downloads-api-openapi.yml",
+    "mockaroo-generate-api-openapi.yml",
+    "mockaroo-types-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
