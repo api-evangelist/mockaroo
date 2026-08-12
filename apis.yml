@@ -303,6 +303,13 @@ apis:
   - type: Examples
     url: examples/mockaroo-dataset-example.json
 common:
+  - type: IssueTracker
+    url: https://github.com/mockaroo/mockaroo-node/issues
+  - type: Releases
+    url: https://github.com/mockaroo/mockaroo-node/releases
+  - type: License
+    name: MIT
+    url: https://github.com/mockaroo/mockaroo-node/blob/master/LICENSE
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/mockaroo/overview
   - type: AgenticAccess
