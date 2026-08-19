@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mockaroo Datasets Types API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Field Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mockaroo.com/api/types"
+          },
+          "docs": "Return the catalog of built-in field types Mockaroo can generate, including each type's name, category, and supported parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1558 @@
+{
+  "item": [
+    {
+      "id": "efeff0b7-bdb2-4474-b534-50f3142cbb72",
+      "name": "Generate",
+      "description": {
+        "content": "Generate mock data records on demand in multiple formats.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "786ea0fa-68a3-4faa-80aa-3aaa60e3f6e3",
+          "name": "Generate Records As JSON",
+          "request": {
+            "name": "Generate Records As JSON",
+            "description": {
+              "content": "Generate records using either a saved schema (via the schema parameter) or an inline list of field specifications supplied in the request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generate.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "1",
+                  "description": "Number of records to generate."
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<string>",
+                  "description": "Name of a saved Mockaroo schema to generate from."
+                },
+                {
+                  "disabled": false,
+                  "key": "array",
+                  "value": "false",
+                  "description": "Force a JSON array response even when count=1."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_nulls",
+                  "value": "false",
+                  "description": "Emit null-valued JSON fields instead of omitting them."
+                },
+                {
+                  "disabled": false,
+                  "key": "background",
+                  "value": "false",
+                  "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9e614570-0885-40bd-a814-e47029b14ea9",
+              "name": "Generated record(s) as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "array",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_nulls",
+                      "value": "false"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 28,\n    \"formula\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 58,\n    \"formula\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": true,\n  \"key_2\": 7301,\n  \"key_3\": 4787\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ff3cc6a-d0ec-423b-b855-1542feaddac4",
+              "name": "Background job queued; poll the returned download id for status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "array",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_nulls",
+                      "value": "false"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 28,\n    \"formula\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 58,\n    \"formula\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"success\",\n  \"percentComplete\": 8523.864503692075,\n  \"recordsGenerated\": 2147,\n  \"error\": \"string\",\n  \"url\": \"http://QIPdZh.dhOam0jBmoNQMd3UbwQoeUdtMJfva5HVJswZUzy6w2exLiX-z6+GGotWgZbYHy\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db9a52f4-1f2c-4a3d-8d48-a66cf47e6a61",
+              "name": "The request is malformed or a field specification is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "array",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_nulls",
+                      "value": "false"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 28,\n    \"formula\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 58,\n    \"formula\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c6c1ec9-6ae9-4023-8137-c8b4b4248963",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "array",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_nulls",
+                      "value": "false"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 28,\n    \"formula\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 58,\n    \"formula\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f601eea8-fc67-4b45-9599-4760abad2d5b",
+              "name": "Daily request or record quota exceeded for the API key's plan.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "array",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_nulls",
+                      "value": "false"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 28,\n    \"formula\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 58,\n    \"formula\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "232be9db-d3c5-4d02-9bf6-3be1ff1c525b",
+          "name": "Generate Records As CSV",
+          "request": {
+            "name": "Generate Records As CSV",
+            "description": {
+              "content": "Generate records as comma-separated values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generate.csv"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "1",
+                  "description": "Number of records to generate."
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<string>",
+                  "description": "Name of a saved Mockaroo schema to generate from."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_header",
+                  "value": "true",
+                  "description": "Include a header row in CSV/TXT/custom output."
+                },
+                {
+                  "disabled": false,
+                  "key": "line_ending",
+                  "value": "unix",
+                  "description": "Line ending style for text-based formats."
+                },
+                {
+                  "disabled": false,
+                  "key": "background",
+                  "value": "false",
+                  "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"percentBlank\": \"<integer>\",\n    \"formula\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0de0518a-da6d-4f6a-915b-2807831ee8ce",
+              "name": "Generated CSV records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "line_ending",
+                      "value": "unix"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 28,\n    \"formula\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 58,\n    \"formula\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f3618745-c0d8-4332-8aa6-2b88c93f4326",
+              "name": "Background job queued; poll the returned download id for status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "line_ending",
+                      "value": "unix"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 28,\n    \"formula\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 58,\n    \"formula\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"success\",\n  \"percentComplete\": 8523.864503692075,\n  \"recordsGenerated\": 2147,\n  \"error\": \"string\",\n  \"url\": \"http://QIPdZh.dhOam0jBmoNQMd3UbwQoeUdtMJfva5HVJswZUzy6w2exLiX-z6+GGotWgZbYHy\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b223095d-e8a7-403c-a55d-35413e9ad3ed",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "line_ending",
+                      "value": "unix"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 28,\n    \"formula\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 58,\n    \"formula\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b28c37d6-56a5-46c4-b568-78e36002537b",
+              "name": "Daily request or record quota exceeded for the API key's plan.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "line_ending",
+                      "value": "unix"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 28,\n    \"formula\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"percentBlank\": 58,\n    \"formula\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2c9f773-fa1a-48e5-88f8-20c71683de03",
+          "name": "Generate Records As Tab-Separated Text",
+          "request": {
+            "name": "Generate Records As Tab-Separated Text",
+            "description": {
+              "content": "Generate records as tab-separated text.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generate.txt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "1",
+                  "description": "Number of records to generate."
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<string>",
+                  "description": "Name of a saved Mockaroo schema to generate from."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_header",
+                  "value": "true",
+                  "description": "Include a header row in CSV/TXT/custom output."
+                },
+                {
+                  "disabled": false,
+                  "key": "line_ending",
+                  "value": "unix",
+                  "description": "Line ending style for text-based formats."
+                },
+                {
+                  "disabled": false,
+                  "key": "background",
+                  "value": "false",
+                  "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1c667a3a-fdb0-41a7-ba87-73cb20e5c88a",
+              "name": "Generated tab-separated records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.txt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "line_ending",
+                      "value": "unix"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fec49752-4105-43fd-b0ab-2135dedea822",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.txt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "line_ending",
+                      "value": "unix"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03826e3e-7720-4aaa-b70a-e919c056275a",
+          "name": "Generate Records With A Custom Delimiter",
+          "request": {
+            "name": "Generate Records With A Custom Delimiter",
+            "description": {
+              "content": "Generate records using a configurable delimiter and quote character.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generate.custom"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "1",
+                  "description": "Number of records to generate."
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<string>",
+                  "description": "Name of a saved Mockaroo schema to generate from."
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": "<string>",
+                  "description": "Field delimiter for /api/generate.custom."
+                },
+                {
+                  "disabled": false,
+                  "key": "quote_char",
+                  "value": "<string>",
+                  "description": "Quote character for /api/generate.custom."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_header",
+                  "value": "true",
+                  "description": "Include a header row in CSV/TXT/custom output."
+                },
+                {
+                  "disabled": false,
+                  "key": "line_ending",
+                  "value": "unix",
+                  "description": "Line ending style for text-based formats."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4af23b28-edf6-4921-ae4b-1fb77da765bd",
+              "name": "Custom-delimited records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.custom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "quote_char",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "line_ending",
+                      "value": "unix"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c7e0880-8d03-4992-94c1-8ba32d0ba04f",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.custom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "delimiter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "quote_char",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_header",
+                      "value": "true"
+                    },
+                    {
+                      "key": "line_ending",
+                      "value": "unix"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62b0ff9f-10ec-4ceb-a413-3fc0f6850076",
+          "name": "Generate Records As SQL Inserts",
+          "request": {
+            "name": "Generate Records As SQL Inserts",
+            "description": {
+              "content": "Generate records as SQL INSERT statements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generate.sql"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "1",
+                  "description": "Number of records to generate."
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<string>",
+                  "description": "Name of a saved Mockaroo schema to generate from."
+                },
+                {
+                  "disabled": false,
+                  "key": "table",
+                  "value": "<string>",
+                  "description": "Target table name for INSERT statements."
+                },
+                {
+                  "disabled": false,
+                  "key": "background",
+                  "value": "false",
+                  "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/sql"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "baa28fc1-57cd-4448-ba16-41f4f9ac030a",
+              "name": "Generated SQL INSERT statements.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.sql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "table",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/sql"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/sql"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f1b54509-b949-4e44-a794-881a5760c530",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.sql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "table",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5864eaf-b1d5-43f9-9747-53832f031a89",
+          "name": "Generate Records As XML",
+          "request": {
+            "name": "Generate Records As XML",
+            "description": {
+              "content": "Generate records as an XML document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generate.xml"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "1",
+                  "description": "Number of records to generate."
+                },
+                {
+                  "disabled": false,
+                  "key": "schema",
+                  "value": "<string>",
+                  "description": "Name of a saved Mockaroo schema to generate from."
+                },
+                {
+                  "disabled": false,
+                  "key": "background",
+                  "value": "false",
+                  "description": "Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e5e3b56-050a-4e15-a4cd-f79639c740d9",
+              "name": "Generated XML document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.xml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "9045b213-dec8-4b53-a9f6-2a9dbb3b66ac",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generate.xml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "1"
+                    },
+                    {
+                      "key": "schema",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "background",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mockaroo.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "62d3608b-288f-4b72-ae70-847e40d99a7c",
+    "name": "Mockaroo Datasets Generate API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Mockaroo provides a REST API for generating realistic mock data on demand using over 150 built-in field types. The API supports schema-based and field-spec-based generation, multiple output formats (JSON, CSV, TXT, custom-delimited, SQL, XML), background jobs for large requests, and management of named datasets used as lookup sources during generation.\n\nContact Support:\n Name: Mockaroo Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "item": [
+    {
+      "id": "2bb015ae-2025-44d0-b7e7-2c09344a3ca4",
+      "name": "Types",
+      "description": {
+        "content": "Discover available built-in field types.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c41f72c6-4229-4f6f-b846-599e608e4ea1",
+          "name": "List Field Types",
+          "request": {
+            "name": "List Field Types",
+            "description": {
+              "content": "Return the catalog of built-in field types Mockaroo can generate, including each type's name, category, and supported parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b7d1be5-11ce-47fc-8680-9efdbad73a20",
+              "name": "List of available field types and their parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"category\": \"string\",\n    \"parameters\": [\n      {\n        \"key_0\": true,\n        \"key_1\": \"string\"\n      },\n      {\n        \"key_0\": 2298,\n        \"key_1\": true,\n        \"key_2\": 6889\n      }\n    ]\n  },\n  {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"category\": \"string\",\n    \"parameters\": [\n      {\n        \"key_0\": \"string\",\n        \"key_1\": 1707.1090891093743\n      },\n      {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": false\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "690f12d5-da4b-4aeb-b603-c02be8f5d60a",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b239620-2808-4af1-889c-9723ca94e4e6",
+              "name": "Daily request or record quota exceeded for the API key's plan.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mockaroo.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b2bfb0ce-368f-4bac-a2b3-b56e7e9cd598",
+    "name": "Mockaroo Datasets Types API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Mockaroo provides a REST API for generating realistic mock data on demand using over 150 built-in field types. The API supports schema-based and field-spec-based generation, multiple output formats (JSON, CSV, TXT, custom-delimited, SQL, XML), background jobs for large requests, and management of named datasets used as lookup sources during generation.\n\nContact Support:\n Name: Mockaroo Support",
+      "type": "text/plain"
+    }
+  }
+}

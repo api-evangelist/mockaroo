@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mockaroo Datasets API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload Or Replace A Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mockaroo.com/api/datasets/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the dataset."
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "query",
+                "description": "Optional original filename for the uploaded dataset."
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query",
+                "description": "Optional project name in which to store the dataset."
+              }
+            ]
+          },
+          "docs": "Upload a CSV or plain-text dataset under the given name. The dataset can then be used as a lookup source in schemas via the Dataset Column type."
+        },
+        {
+          "info": {
+            "name": "Delete A Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mockaroo.com/api/datasets/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the dataset."
+              }
+            ]
+          },
+          "docs": "Remove the dataset with the given name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
