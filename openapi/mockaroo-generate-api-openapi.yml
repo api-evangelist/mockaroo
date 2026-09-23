@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mockaroo Datasets Generate API
+  title: Mockaroo Generate API
   version: '1.0'
   summary: Realistic Mock Data Generation
   description: Mockaroo provides a REST API for generating realistic mock data on demand using over 150 built-in field types. The API supports schema-based and field-spec-based generation, multiple output formats (JSON, CSV, TXT, custom-delimited, SQL, XML), background jobs for large requests, and management of named datasets used as lookup sources during generation.
@@ -183,6 +183,96 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    IncludeNulls:
+      name: include_nulls
+      in: query
+      schema:
+        type: boolean
+        default: false
+      description: Emit null-valued JSON fields instead of omitting them.
+    QuoteChar:
+      name: quote_char
+      in: query
+      schema:
+        type: string
+      description: Quote character for /api/generate.custom.
+    Delimiter:
+      name: delimiter
+      in: query
+      schema:
+        type: string
+      description: Field delimiter for /api/generate.custom.
+    Background:
+      name: background
+      in: query
+      schema:
+        type: boolean
+        default: false
+      description: Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.
+    Array:
+      name: array
+      in: query
+      schema:
+        type: boolean
+        default: false
+      description: Force a JSON array response even when count=1.
+    LineEnding:
+      name: line_ending
+      in: query
+      schema:
+        type: string
+        enum:
+        - unix
+        - windows
+        default: unix
+      description: Line ending style for text-based formats.
+    IncludeHeader:
+      name: include_header
+      in: query
+      schema:
+        type: boolean
+        default: true
+      description: Include a header row in CSV/TXT/custom output.
+    Schema:
+      name: schema
+      in: query
+      schema:
+        type: string
+      description: Name of a saved Mockaroo schema to generate from.
+    Count:
+      name: count
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Number of records to generate.
+  responses:
+    RateLimited:
+      description: Daily request or record quota exceeded for the API key's plan.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    DownloadAccepted:
+      description: Background job queued; poll the returned download id for status.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Download'
+    BadRequest:
+      description: The request is malformed or a field specification is invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Download:
       type: object
@@ -206,21 +296,6 @@ components:
           type: string
           format: uri
       description: Status of a background generation job.
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
-        code:
-          type: string
-      description: Standard error envelope.
-    FieldSpecList:
-      type: array
-      items:
-        $ref: '#/components/schemas/FieldSpec'
-      description: An inline list of field specifications used in lieu of a saved schema.
     FieldSpec:
       type: object
       required:
@@ -243,96 +318,21 @@ components:
           description: Mockaroo formula expression to transform the generated value.
       additionalProperties: true
       description: A single field specification used to describe an inline schema.
-  parameters:
-    Delimiter:
-      name: delimiter
-      in: query
-      schema:
-        type: string
-      description: Field delimiter for /api/generate.custom.
-    QuoteChar:
-      name: quote_char
-      in: query
-      schema:
-        type: string
-      description: Quote character for /api/generate.custom.
-    Count:
-      name: count
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Number of records to generate.
-    LineEnding:
-      name: line_ending
-      in: query
-      schema:
-        type: string
-        enum:
-        - unix
-        - windows
-        default: unix
-      description: Line ending style for text-based formats.
-    IncludeHeader:
-      name: include_header
-      in: query
-      schema:
-        type: boolean
-        default: true
-      description: Include a header row in CSV/TXT/custom output.
-    Background:
-      name: background
-      in: query
-      schema:
-        type: boolean
-        default: false
-      description: Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.
-    Schema:
-      name: schema
-      in: query
-      schema:
-        type: string
-      description: Name of a saved Mockaroo schema to generate from.
-    IncludeNulls:
-      name: include_nulls
-      in: query
-      schema:
-        type: boolean
-        default: false
-      description: Emit null-valued JSON fields instead of omitting them.
-    Array:
-      name: array
-      in: query
-      schema:
-        type: boolean
-        default: false
-      description: Force a JSON array response even when count=1.
-  responses:
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request is malformed or a field specification is invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    DownloadAccepted:
-      description: Background job queued; poll the returned download id for status.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Download'
-    RateLimited:
-      description: Daily request or record quota exceeded for the API key's plan.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    FieldSpecList:
+      type: array
+      items:
+        $ref: '#/components/schemas/FieldSpec'
+      description: An inline list of field specifications used in lieu of a saved schema.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: string
+      description: Standard error envelope.
   securitySchemes:
     apiKeyQuery:
       type: apiKey
