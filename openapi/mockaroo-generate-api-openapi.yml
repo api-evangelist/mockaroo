@@ -184,6 +184,19 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   parameters:
+    IncludeHeader:
+      name: include_header
+      in: query
+      schema:
+        type: boolean
+        default: true
+      description: Include a header row in CSV/TXT/custom output.
+    QuoteChar:
+      name: quote_char
+      in: query
+      schema:
+        type: string
+      description: Quote character for /api/generate.custom.
     IncludeNulls:
       name: include_nulls
       in: query
@@ -191,18 +204,28 @@ components:
         type: boolean
         default: false
       description: Emit null-valued JSON fields instead of omitting them.
-    QuoteChar:
-      name: quote_char
-      in: query
-      schema:
-        type: string
-      description: Quote character for /api/generate.custom.
     Delimiter:
       name: delimiter
       in: query
       schema:
         type: string
       description: Field delimiter for /api/generate.custom.
+    LineEnding:
+      name: line_ending
+      in: query
+      schema:
+        type: string
+        enum:
+        - unix
+        - windows
+        default: unix
+      description: Line ending style for text-based formats.
+    Schema:
+      name: schema
+      in: query
+      schema:
+        type: string
+      description: Name of a saved Mockaroo schema to generate from.
     Background:
       name: background
       in: query
@@ -217,29 +240,6 @@ components:
         type: boolean
         default: false
       description: Force a JSON array response even when count=1.
-    LineEnding:
-      name: line_ending
-      in: query
-      schema:
-        type: string
-        enum:
-        - unix
-        - windows
-        default: unix
-      description: Line ending style for text-based formats.
-    IncludeHeader:
-      name: include_header
-      in: query
-      schema:
-        type: boolean
-        default: true
-      description: Include a header row in CSV/TXT/custom output.
-    Schema:
-      name: schema
-      in: query
-      schema:
-        type: string
-      description: Name of a saved Mockaroo schema to generate from.
     Count:
       name: count
       in: query
@@ -248,54 +248,22 @@ components:
         minimum: 1
         default: 1
       description: Number of records to generate.
-  responses:
-    RateLimited:
-      description: Daily request or record quota exceeded for the API key's plan.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    DownloadAccepted:
-      description: Background job queued; poll the returned download id for status.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Download'
-    BadRequest:
-      description: The request is malformed or a field specification is invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Download:
+    Error:
       type: object
       properties:
-        id:
-          type: string
-        status:
-          type: string
-          enum:
-          - queued
-          - in_progress
-          - success
-          - failed
-        percentComplete:
-          type: number
-        recordsGenerated:
-          type: integer
         error:
           type: string
-        url:
+        message:
           type: string
-          format: uri
-      description: Status of a background generation job.
+        code:
+          type: string
+      description: Standard error envelope.
+    FieldSpecList:
+      type: array
+      items:
+        $ref: '#/components/schemas/FieldSpec'
+      description: An inline list of field specifications used in lieu of a saved schema.
     FieldSpec:
       type: object
       required:
@@ -318,21 +286,53 @@ components:
           description: Mockaroo formula expression to transform the generated value.
       additionalProperties: true
       description: A single field specification used to describe an inline schema.
-    FieldSpecList:
-      type: array
-      items:
-        $ref: '#/components/schemas/FieldSpec'
-      description: An inline list of field specifications used in lieu of a saved schema.
-    Error:
+    Download:
       type: object
       properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - queued
+          - in_progress
+          - success
+          - failed
+        percentComplete:
+          type: number
+        recordsGenerated:
+          type: integer
         error:
           type: string
-        message:
+        url:
           type: string
-        code:
-          type: string
-      description: Standard error envelope.
+          format: uri
+      description: Status of a background generation job.
+  responses:
+    BadRequest:
+      description: The request is malformed or a field specification is invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Daily request or record quota exceeded for the API key's plan.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    DownloadAccepted:
+      description: Background job queued; poll the returned download id for status.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Download'
   securitySchemes:
     apiKeyQuery:
       type: apiKey

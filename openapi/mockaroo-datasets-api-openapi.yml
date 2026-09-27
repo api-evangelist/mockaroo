@@ -68,13 +68,6 @@ paths:
         '404':
           description: Dataset not found.
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     DatasetName:
       name: name
@@ -94,6 +87,13 @@ components:
         code:
           type: string
       description: Standard error envelope.
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     apiKeyQuery:
       type: apiKey

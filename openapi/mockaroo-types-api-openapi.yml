@@ -40,6 +40,16 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: string
+      description: Standard error envelope.
     FieldType:
       type: object
       properties:
@@ -60,25 +70,15 @@ components:
       items:
         $ref: '#/components/schemas/FieldType'
       description: Catalog of built-in field types.
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
-        code:
-          type: string
-      description: Standard error envelope.
   responses:
-    RateLimited:
-      description: Daily request or record quota exceeded for the API key's plan.
+    Unauthorized:
+      description: Missing or invalid API key.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API key.
+    RateLimited:
+      description: Daily request or record quota exceeded for the API key's plan.
       content:
         application/json:
           schema:
