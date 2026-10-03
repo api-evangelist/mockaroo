@@ -58,6 +58,16 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: string
+      description: Standard error envelope.
     Download:
       type: object
       properties:
@@ -80,16 +90,6 @@ components:
           type: string
           format: uri
       description: Status of a background generation job.
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
-        code:
-          type: string
-      description: Standard error envelope.
   responses:
     Unauthorized:
       description: Missing or invalid API key.

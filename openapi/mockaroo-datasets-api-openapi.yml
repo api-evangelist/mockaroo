@@ -68,14 +68,6 @@ paths:
         '404':
           description: Dataset not found.
 components:
-  parameters:
-    DatasetName:
-      name: name
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Name of the dataset.
   schemas:
     Error:
       type: object
@@ -87,6 +79,14 @@ components:
         code:
           type: string
       description: Standard error envelope.
+  parameters:
+    DatasetName:
+      name: name
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Name of the dataset.
   responses:
     Unauthorized:
       description: Missing or invalid API key.
