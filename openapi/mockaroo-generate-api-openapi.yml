@@ -183,80 +183,15 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    Delimiter:
-      name: delimiter
-      in: query
-      schema:
-        type: string
-      description: Field delimiter for /api/generate.custom.
-    QuoteChar:
-      name: quote_char
-      in: query
-      schema:
-        type: string
-      description: Quote character for /api/generate.custom.
-    IncludeHeader:
-      name: include_header
-      in: query
-      schema:
-        type: boolean
-        default: true
-      description: Include a header row in CSV/TXT/custom output.
-    Count:
-      name: count
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Number of records to generate.
-    Background:
-      name: background
-      in: query
-      schema:
-        type: boolean
-        default: false
-      description: Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.
-    Schema:
-      name: schema
-      in: query
-      schema:
-        type: string
-      description: Name of a saved Mockaroo schema to generate from.
-    IncludeNulls:
-      name: include_nulls
-      in: query
-      schema:
-        type: boolean
-        default: false
-      description: Emit null-valued JSON fields instead of omitting them.
-    Array:
-      name: array
-      in: query
-      schema:
-        type: boolean
-        default: false
-      description: Force a JSON array response even when count=1.
-    LineEnding:
-      name: line_ending
-      in: query
-      schema:
-        type: string
-        enum:
-        - unix
-        - windows
-        default: unix
-      description: Line ending style for text-based formats.
   responses:
-    Unauthorized:
-      description: Missing or invalid API key.
+    RateLimited:
+      description: Daily request or record quota exceeded for the API key's plan.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    RateLimited:
-      description: Daily request or record quota exceeded for the API key's plan.
+    Unauthorized:
+      description: Missing or invalid API key.
       content:
         application/json:
           schema:
@@ -273,7 +208,99 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Download'
+  parameters:
+    Count:
+      name: count
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Number of records to generate.
+    Background:
+      name: background
+      in: query
+      schema:
+        type: boolean
+        default: false
+      description: Run the generation as a background job. The response will contain a download id which can be polled via /api/downloads/{id}. Requires a paid plan.
+    QuoteChar:
+      name: quote_char
+      in: query
+      schema:
+        type: string
+      description: Quote character for /api/generate.custom.
+    LineEnding:
+      name: line_ending
+      in: query
+      schema:
+        type: string
+        enum:
+        - unix
+        - windows
+        default: unix
+      description: Line ending style for text-based formats.
+    Schema:
+      name: schema
+      in: query
+      schema:
+        type: string
+      description: Name of a saved Mockaroo schema to generate from.
+    Delimiter:
+      name: delimiter
+      in: query
+      schema:
+        type: string
+      description: Field delimiter for /api/generate.custom.
+    IncludeHeader:
+      name: include_header
+      in: query
+      schema:
+        type: boolean
+        default: true
+      description: Include a header row in CSV/TXT/custom output.
+    IncludeNulls:
+      name: include_nulls
+      in: query
+      schema:
+        type: boolean
+        default: false
+      description: Emit null-valued JSON fields instead of omitting them.
+    Array:
+      name: array
+      in: query
+      schema:
+        type: boolean
+        default: false
+      description: Force a JSON array response even when count=1.
   schemas:
+    FieldSpec:
+      type: object
+      required:
+      - name
+      - type
+      properties:
+        name:
+          type: string
+          description: Column or property name for the generated field.
+        type:
+          type: string
+          description: One of Mockaroo's built-in field types (e.g. First Name, Email Address, IP Address v4).
+        percentBlank:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: Percentage of generated values that should be blank.
+        formula:
+          type: string
+          description: Mockaroo formula expression to transform the generated value.
+      additionalProperties: true
+      description: A single field specification used to describe an inline schema.
+    FieldSpecList:
+      type: array
+      items:
+        $ref: '#/components/schemas/FieldSpec'
+      description: An inline list of field specifications used in lieu of a saved schema.
     Error:
       type: object
       properties:
@@ -306,33 +333,6 @@ components:
           type: string
           format: uri
       description: Status of a background generation job.
-    FieldSpecList:
-      type: array
-      items:
-        $ref: '#/components/schemas/FieldSpec'
-      description: An inline list of field specifications used in lieu of a saved schema.
-    FieldSpec:
-      type: object
-      required:
-      - name
-      - type
-      properties:
-        name:
-          type: string
-          description: Column or property name for the generated field.
-        type:
-          type: string
-          description: One of Mockaroo's built-in field types (e.g. First Name, Email Address, IP Address v4).
-        percentBlank:
-          type: integer
-          minimum: 0
-          maximum: 100
-          description: Percentage of generated values that should be blank.
-        formula:
-          type: string
-          description: Mockaroo formula expression to transform the generated value.
-      additionalProperties: true
-      description: A single field specification used to describe an inline schema.
   securitySchemes:
     apiKeyQuery:
       type: apiKey
