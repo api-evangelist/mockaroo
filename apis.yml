@@ -328,6 +328,9 @@ apis:
   - type: Examples
     url: examples/mockaroo-dataset-example.json
 common:
+  - type: CapabilityMap
+    url: capabilities/mockaroo-capability-edges.yml
+    name: Mockaroo Business Capability Map
   - type: IssueTracker
     url: https://github.com/mockaroo/mockaroo-node/issues
   - type: Releases
