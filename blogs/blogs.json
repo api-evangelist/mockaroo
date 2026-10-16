@@ -3,12 +3,12 @@
   "feeds": [
     {
       "source": "https://www.mockaroo.com/blog",
-      "feed_url": "",
-      "title": "Mockaroo Blog",
+      "feed_url": "https://www.mockaroo.com/blog",
+      "title": "",
       "saved": 0,
-      "note": "No RSS/Atom feed resolved (tried /feed/, /rss/, /feed.xml, /atom.xml, /index.xml); HTML scrape of /blog returned only SPA navigation/footer chrome with no post links."
+      "method": "none"
     }
   ],
-  "fetched": "2026-07-04T13:02:52Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 0
 }
