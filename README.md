@@ -1,4 +1,4 @@
-# Mockaroo (mockaroo)
+# Mockaroo
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,113 +66,188 @@
 
 Mockaroo is a realistic mock data generator and API mocking service used by developers and QA teams to produce JSON, CSV, TXT, custom-delimited, SQL, and XML test data. The platform combines a schema designer, 150+ built-in field types (Name, Internet, Address, Business, Date, Currency, Geographic, Phone, Health, Technology, and more), named datasets used as lookup sources, hosted mock APIs, formulas, projects, AI-assisted field generation, de-identification, and a REST API for programmatic generation. Mockaroo ships in four tiers (Free, Silver, Gold, Enterprise), with the Enterprise tier available as a Docker image for self-hosted, unlimited generation.
 
-**APIs.json:** [https://www.mockaroo.com/docs](https://www.mockaroo.com/docs)
+**Areas:** Test Data · Mock Data · API Mocking · Data Generation · Developer Tools · QA Testing · Realistic Data · Schema · Datasets · Public APIs
 
-## Scope
+## Mockaroo on APIs.io
 
-- **Type:** Index
-- **Access:** 3rd-Party
+Everything profiled for Mockaroo is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mockaroo/](https://apis.io/providers/mockaroo/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- Test Data
-- Mock Data
-- API Mocking
-- Data Generation
-- Developer Tools
-- QA Testing
-- Realistic Data
-- Schemas
-- Datasets
-- Public APIs
+- [Mockaroo Datasets API](https://apis.io/apis/mockaroo/mockaroo-datasets-api/) — Manage named CSV datasets used as lookup sources.
+- [Mockaroo Downloads API](https://apis.io/apis/mockaroo/mockaroo-downloads-api/) — Manage long-running background generation jobs.
+- [Mockaroo Generate API](https://apis.io/apis/mockaroo/mockaroo-generate-api/) — Generate mock data records on demand in multiple formats.
+- [Mockaroo Types API](https://apis.io/apis/mockaroo/mockaroo-types-api/) — Discover available built-in field types.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Mockaroo API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-REST API for generating realistic mock data records in JSON, CSV, TXT, custom-delimited, SQL, and XML formats. Supports saved schemas, inline field specifications, 150+ built-in field types, named datasets as lookup sources, and asynchronous background generation jobs for large requests.
+- [Mockaroo Agentic Access](https://apis.io/agentic-access/mockaroo/mockaroo-agentic-access/)
 
-- **Human URL:** [https://www.mockaroo.com/docs](https://www.mockaroo.com/docs)
-- **Base URL:** `https://api.mockaroo.com`
+#### JSON Schema (4)
 
-#### Tags
+The data models the API reads and writes.
 
-- Test Data
-- Mock Data
-- Data Generation
-- REST API
+- [Mockaroo Dataset](https://apis.io/schemas/mockaroo/mockaroo-dataset/)
+- [Mockaroo Background Download](https://apis.io/schemas/mockaroo/mockaroo-download/)
+- [Mockaroo Field Spec](https://apis.io/schemas/mockaroo/mockaroo-field-spec/)
+- [Mockaroo Field Type](https://apis.io/schemas/mockaroo/mockaroo-field-type/)
 
-#### Properties
+#### JSON Structure (4)
 
-- [Documentation](https://www.mockaroo.com/docs)
-- [API Reference](https://www.mockaroo.com/docs)
-- [OpenAPI](openapi/mockaroo-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mockaroo.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mockaroo.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Authentication](https://www.mockaroo.com/docs)
-- [Rate Limits](rate-limits/mockaroo-rate-limits.yml)
-- [JSON Schema](json-schema/mockaroo-field-spec-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/mockaroo-field-type-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/mockaroo-download-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/mockaroo-dataset-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/mockaroo-field-spec-structure.json)
-- [JSON Structure](json-structure/mockaroo-field-type-structure.json)
-- [JSON Structure](json-structure/mockaroo-download-structure.json)
-- [JSON Structure](json-structure/mockaroo-dataset-structure.json)
-- [Example](examples/mockaroo-list-types-example.json)
-- [Example](examples/mockaroo-generate-json-example.json)
-- [Example](examples/mockaroo-generate-csv-example.json)
-- [Example](examples/mockaroo-generate-txt-example.json)
-- [Example](examples/mockaroo-generate-custom-example.json)
-- [Example](examples/mockaroo-generate-sql-example.json)
-- [Example](examples/mockaroo-generate-xml-example.json)
-- [Example](examples/mockaroo-upload-dataset-example.json)
-- [Example](examples/mockaroo-delete-dataset-example.json)
-- [Example](examples/mockaroo-get-download-example.json)
-- [Example](examples/mockaroo-cancel-download-example.json)
-- [Example](examples/mockaroo-field-spec-example.json)
-- [Example](examples/mockaroo-field-type-example.json)
-- [Example](examples/mockaroo-download-example.json)
-- [Example](examples/mockaroo-dataset-example.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Mockaroo Dataset Structure](https://apis.io/json-structure/mockaroo/mockaroo-dataset-structure/)
+- [Mockaroo Download Structure](https://apis.io/json-structure/mockaroo/mockaroo-download-structure/)
+- [Mockaroo Field Spec Structure](https://apis.io/json-structure/mockaroo/mockaroo-field-spec-structure/)
+- [Mockaroo Field Type Structure](https://apis.io/json-structure/mockaroo/mockaroo-field-type-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Mockaroo Context](https://apis.io/jsonld/mockaroo/mockaroo-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Mockaroo Vocabulary](https://apis.io/vocabularies/mockaroo/mockaroo-vocabulary/)
+
+#### Examples (14)
+
+Example requests and responses.
+
+- [Mockaroo Cancel Download Example](https://apis.io/examples/mockaroo/mockaroo-cancel-download-example/)
+- [Mockaroo Dataset Example](https://apis.io/examples/mockaroo/mockaroo-dataset-example/)
+- [Mockaroo Delete Dataset Example](https://apis.io/examples/mockaroo/mockaroo-delete-dataset-example/)
+- [Mockaroo Download Example](https://apis.io/examples/mockaroo/mockaroo-download-example/)
+- [Mockaroo Field Type Example](https://apis.io/examples/mockaroo/mockaroo-field-type-example/)
+- [Mockaroo Generate Csv Example](https://apis.io/examples/mockaroo/mockaroo-generate-csv-example/)
+- [Mockaroo Generate Custom Example](https://apis.io/examples/mockaroo/mockaroo-generate-custom-example/)
+- [Mockaroo Generate Json Example](https://apis.io/examples/mockaroo/mockaroo-generate-json-example/)
+- [Mockaroo Generate Sql Example](https://apis.io/examples/mockaroo/mockaroo-generate-sql-example/)
+- [Mockaroo Generate Txt Example](https://apis.io/examples/mockaroo/mockaroo-generate-txt-example/)
+- [Mockaroo Generate Xml Example](https://apis.io/examples/mockaroo/mockaroo-generate-xml-example/)
+- [Mockaroo Get Download Example](https://apis.io/examples/mockaroo/mockaroo-get-download-example/)
+- [Mockaroo List Types Example](https://apis.io/examples/mockaroo/mockaroo-list-types-example/)
+- [Mockaroo Upload Dataset Example](https://apis.io/examples/mockaroo/mockaroo-upload-dataset-example/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Mockaroo API](https://apis.io/collections/mockaroo/open-mockaroo/)
+- [Mockaroo Datasets API](https://apis.io/collections/mockaroo/open-mockaroo-datasets-api/)
+- [Mockaroo Datasets Downloads API](https://apis.io/collections/mockaroo/open-mockaroo-downloads-api/)
+- [Mockaroo Datasets Generate API](https://apis.io/collections/mockaroo/open-mockaroo-generate-api/)
+- [Mockaroo Datasets Types API](https://apis.io/collections/mockaroo/open-mockaroo-types-api/)
+- [Mockaroo Datasets API](https://apis.io/collections/mockaroo/postman-mockaroo-datasets-api/)
+- [Mockaroo Datasets Downloads API](https://apis.io/collections/mockaroo/postman-mockaroo-downloads-api/)
+- [Mockaroo Datasets Generate API](https://apis.io/collections/mockaroo/postman-mockaroo-generate-api/)
+- [Mockaroo Datasets Types API](https://apis.io/collections/mockaroo/postman-mockaroo-types-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Mockaroo — jsonschema rules](https://apis.io/rules/mockaroo/mockaroo-jsonschema-spectral-rules/)
+- [Mockaroo API Rules](https://apis.io/rules/mockaroo/mockaroo-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Mockaroo Authentication](https://apis.io/security/mockaroo/mockaroo-authentication/)
+- [Mockaroo Domain Security](https://apis.io/security/mockaroo/mockaroo-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Mockaroo Plans Pricing](https://apis.io/plans/mockaroo/mockaroo-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Mockaroo Rate Limits](https://apis.io/rate-limits/mockaroo/mockaroo-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Mockaroo Finops](https://apis.io/finops/mockaroo/mockaroo-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.mockaroo.com)
 - [Documentation](https://www.mockaroo.com/docs)
-- [Sign Up](https://www.mockaroo.com/users/sign_up)
-- [Login](https://www.mockaroo.com/users/sign_in)
 - [Pricing](https://www.mockaroo.com/pricing)
-- [Plans](plans/mockaroo-plans-pricing.yml)
-- [Rate Limits](rate-limits/mockaroo-rate-limits.yml)
-- [Terms of Service](https://www.mockaroo.com/terms)
-- [Privacy Policy](https://www.mockaroo.com/privacy)
 - [Support](https://www.mockaroo.com/support)
-- [GitHub Organization](https://github.com/mockaroo)
-- [GitHub Repository](https://github.com/mockaroo/mockaroo-node)
-- [GitHub Repository](https://github.com/mockaroo/mockaroo-enterprise)
-- [SDK](https://github.com/mockaroo/mockaroo-node)
-- [SDK](https://github.com/amogram/NMockaroo)
-- [SDK](https://github.com/Ackara/Mockaroo.NET)
-- [SDK](https://github.com/Scarvy/mockaroo-python)
-- [SDK](https://github.com/lockedata/mockaRoo)
-- [SDK](https://github.com/djhvscf/mockaroo.api)
-- [SDK](https://github.com/djuang1/mockaroo-connector)
-- [Spectral Rules](rules/mockaroo-rules.yml)
-- [Vocabulary](vocabulary/mockaroo-vocabulary.yml)
-- [JSON-LD](json-ld/mockaroo-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
+- [Blog](https://www.mockaroo.com/blog)
+- [Terms of service](https://www.mockaroo.com/terms)
+- [Privacy policy](https://www.mockaroo.com/privacy)
+- [GitHub](https://github.com/mockaroo)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
-**Email:** support@mockaroo.com
-**URL:** https://www.mockaroo.com
+**Kin Score 42.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 64.5 |
+| Contract governance | 27.3 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 51.2 |
+| Access clarity | 25.0 |
+
+**Agent readiness 21.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/mockaroo/](https://apis.io/providers/mockaroo/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Mockaroo: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mockaroo/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
